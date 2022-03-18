@@ -47,6 +47,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     /**
      * Init
      */
+
+
     public void firstInit() {
         btn_get = (Button) findViewById(R.id.btn_get);
         btn_post = (Button) findViewById(R.id.btn_post);

@@ -1,0 +1,22 @@
+.main_container {
+  width: 740px;
+  height: 360px;
+  background-color: green;
+  flex-direction: row;
+  display: flex;
+}
+
+.first_bar {
+  width: 30px;
+  height: 360px;
+  background-color: #21253e;
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.second_bar {
+  width: 100px;
+  height: 360px;
+  background-color: #292d4c;
+}
