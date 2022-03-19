@@ -2,16 +2,43 @@ const socket = io();
 
 const welcome = document.getElementById("welcome");
 const form = welcome.querySelector("form");
-const room = document.getElementById("room");
-const h3 = room.querySelector("h3");
+//const room = document.getElementById("room");
+//const h3 = room.querySelector("h3");
+
+const scroll = document.getElementById("scroll");
 
 let roomName;
 
-function addMessage(message) {
-  const ul = room.querySelector("ul");
-  const li = document.createElement("li");
-  li.innerText = message;
-  ul.appendChild(li);
+function addMessage1(message) {
+  //const ul = room.querySelector("ul");
+
+  var div = document.getElementById("msg-field");
+  var btn = document.createElement("p");
+  btn.className = "hello";
+
+  btn.style.float = "right";
+  btn.innerHTML = message;
+
+  div.appendChild(btn);
+
+  btn.style.clear = "right";
+
+  var objDiv = document.getElementById("msg-field");
+  objDiv.scrollTop = objDiv.scrollHeight;
+}
+
+function addMessage2(message) {
+  var div = document.getElementById("msg-field");
+  var btn = document.createElement("p");
+  btn.className = "hello";
+  btn.innerHTML = message;
+  btn.style.backgroundColor = "#f8e896";
+  div.appendChild(btn);
+
+  btn.style.clear = "right";
+
+  var objDiv = document.getElementById("msg-field");
+  objDiv.scrollTop = objDiv.scrollHeight;
 }
 
 room.hidden = true;
@@ -23,7 +50,7 @@ function handleMessageSubmit(event) {
   const intputvalue = input.value;
 
   socket.emit("new_message", input.value, roomName, () => {
-    addMessage(`You: ${intputvalue}`);
+    addMessage1(`You: ${intputvalue}`);
   });
   input.value = "";
 }
@@ -49,21 +76,21 @@ function handleRoomSubmit(event) {
   const input = form.querySelector("#roomname");
   const nickname = form.querySelector("#nickname");
 
-  socket.emit("enter_room", input.value, nickname.value, showRoom);
+  socket.emit("enter_room", input.value, showRoom);
 
   roomName = input.value;
   input.value = "";
-  h3.innerText = `Room ${roomName}`;
+  //h3.innerText = `Room ${roomName}`;
 }
 
 form.addEventListener("submit", handleRoomSubmit);
 
 socket.on("welcome", (user) => {
-  addMessage(`${user} arrived`);
+  addMessage2(`${user}님 도착`);
 });
 
 socket.on("bye", (left) => {
-  addMessage(`${left} left `);
+  addMessage2(`${left}님 나감 `);
 });
 
-socket.on("new_message", addMessage);
+socket.on("new_message", addMessage2);

@@ -50,10 +50,10 @@ wsServer.on("connection", (socket) => {
   socket.onAny((event) => {
     console.log(`Socket Event:${event}`);
   });
-  socket.on("enter_room", async (roomName, nickname, done) => {
+  socket.on("enter_room", async (roomName, done) => {
     await socket.join(roomName);
     await done();
-    await socket.to(roomName).emit("welcome", nickname);
+    await socket.to(roomName).emit("welcome", socket["nickname"]);
   });
   socket.on("disconnecting", () => {
     socket.rooms.forEach((room) =>
