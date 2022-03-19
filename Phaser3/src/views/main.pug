@@ -26,7 +26,28 @@ html(lang="en")
         i(style="color: white;margin-top: 70%;margin-left: 25%;margin-bottom: 30%;"
         class="fa-solid fa-arrow-right-from-bracket")
       div(class="second_bar")
+        div#welcome
+            form
+                input#roomname(placeholder="room name", required, type="text")
+                input#nickname(placeholder="nickname", required, type="text")
+                button Enter Room 
+        div#room
+            h3
+            ul
+            form#name
+                input(placeholder="nickname", required, type="text")
+                button Send 
+            form#msg
+                input(placeholder="message", required, type="text")
+                button Send 
+
+
+
       div
+
+        script(src="/socket.io/socket.io.js")
+        script(src="/public/js/app.js")
+     
 
 
      
