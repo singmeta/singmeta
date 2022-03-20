@@ -17,7 +17,7 @@ html(lang="en")
 
     div(class="main_container")
       div(class="first_bar")
-        i(style="color: white; margin-top: 70%; margin-left: 30%"
+        i#mute(style="color: white; margin-top: 70%; margin-left: 30%"
           class="fa-solid fa-microphone" onclick="mic()")           
         i(style="color: white; margin-top: 70%; margin-left: 25%"
           class="fa-solid fa-comment-dots" onclick="chatscreen()")
@@ -36,9 +36,7 @@ html(lang="en")
                  input#roomname(placeholder="room name", required, type="text")
                  button Enter Room 
                  
-
       div
-
         div#room
             h3
             ul
@@ -48,6 +46,13 @@ html(lang="en")
             form#msg
                 input(placeholder="message", required, type="text")
                 button Send 
+
+            div#call
+                div#myStream
+                    video#myFace(autoplay,playsinline, width="400", height="400")
+                    video#peerFace(autoplay,playsinline, width="400", height="400")
+
+        
 
         script(src="/socket.io/socket.io.js")
         script(src="/public/js/app.js")
