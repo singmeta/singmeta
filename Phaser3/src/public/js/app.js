@@ -6,8 +6,29 @@ const form = welcome.querySelector("form");
 //const h3 = room.querySelector("h3");
 
 const scroll = document.getElementById("scroll");
+const scroll2 = document.getElementById("scroll2");
+
+scroll2.style.display = "block";
 
 let roomName;
+
+function addusers(users) {
+  console.log(users);
+  var scrollp = document.createElement("p");
+  scrollp.style.backgroundColor = "red";
+  scrollp.innerHTML = users;
+  scroll2.appendChild(scrollp);
+}
+
+function visitorscreen() {
+  scroll.style.display = "none";
+  scroll2.style.display = "block";
+}
+
+function chatscreen() {
+  scroll.style.display = "block";
+  scroll2.style.display = "none";
+}
 
 function addMessage1(message) {
   //const ul = room.querySelector("ul");
@@ -94,3 +115,7 @@ socket.on("bye", (left) => {
 });
 
 socket.on("new_message", addMessage2);
+
+socket.on("users", (users) => {
+  addusers(users);
+});

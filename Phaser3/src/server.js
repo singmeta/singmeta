@@ -44,9 +44,10 @@ function publicRooms() {
   return publicRooms;
 }
 
+var users = [];
 wsServer.on("connection", (socket) => {
   socket["nickname"] = "anon";
-  console.log(socket);
+  //console.log(socket);
   socket.onAny((event) => {
     console.log(`Socket Event:${event}`);
   });
@@ -54,17 +55,29 @@ wsServer.on("connection", (socket) => {
     await socket.join(roomName);
     await done();
     await socket.to(roomName).emit("welcome", socket["nickname"]);
+    users.push(socket["nickname"]);
+    console.log(users);
+    socket.to(roomName).emit("users", users);
   });
   socket.on("disconnecting", () => {
-    socket.rooms.forEach((room) =>
-      socket.to(room).emit("bye", socket.nickname)
-    );
+    users.pop();
+    console.log(users);
+    socket.rooms.forEach((room) => {
+      socket.to(room).emit("bye", socket.nickname);
+      socket.to(room).emit("users", users);
+    });
   });
   socket.on("new_message", (msg, room, done) => {
     socket.to(room).emit("new_message", `${socket.nickname}: ${msg}`);
     done();
   });
-  socket.on("nickname", (nickname) => (socket["nickname"] = nickname));
+  socket.on("nickname", (nickname) => {
+    socket["nickname"] = nickname;
+  });
+
+  console.log("------------------------1");
+  console.log(users);
+  console.log("------------------------2");
 });
 
 /*

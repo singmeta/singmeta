@@ -40,3 +40,7 @@
 
   border-radius: 16px;
 }
+
+.scroll {
+  display: block;
+}

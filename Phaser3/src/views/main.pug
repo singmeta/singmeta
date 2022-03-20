@@ -18,16 +18,18 @@ html(lang="en")
     div(class="main_container")
       div(class="first_bar")
         i(style="color: white; margin-top: 70%; margin-left: 30%"
-          class="fa-solid fa-microphone")           
+          class="fa-solid fa-microphone" onclick="mic()")           
         i(style="color: white; margin-top: 70%; margin-left: 25%"
-          class="fa-solid fa-comment-dots")
+          class="fa-solid fa-comment-dots" onclick="chatscreen()")
         i(style="color: white; margin-top: 70%; margin-left: 25%"
-          class="fa-solid fa-user")
+          class="fa-solid fa-user" onclick="visitorscreen()")
         i(style="color: white;margin-top: 70%;margin-left: 25%;margin-bottom: 30%;"
-        class="fa-solid fa-arrow-right-from-bracket")
+        class="fa-solid fa-arrow-right-from-bracket" onclick="outfunction()")
       div(class="second_bar")
         div#scroll
           div(class="display" id="msg-field")
+        div#scroll2
+          div(class="display2" id="msg-field")
           div
             div#welcome
              form
