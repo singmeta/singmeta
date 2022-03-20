@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="16dp"
+            android:gravity="fill_vertical"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_email_1"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/mulish_extrabold"
+                android:text="EMAIL"
+                android:textColor="#323F4B"
+                android:textSize="15dp"
+                tools:layout_conversion_absoluteHeight="38dp"
+                tools:layout_conversion_absoluteWidth="42dp"
+                tools:layout_editor_absoluteX="208dp"
+                tools:layout_editor_absoluteY="201dp" />
+
+            <EditText
+                android:id="@+id/Register_user_email"
+                android:layout_width="350dp"
+                android:layout_height="41dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/border"
+                android:ems="10"
+                android:hint="⠀name@email.com"
+                android:textColor="#9CA5AE"
+                tools:layout_conversion_absoluteHeight="46dp"
+                tools:layout_conversion_absoluteWidth="731dp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="259dp" />
+
+            <TextView
+                android:id="@+id/tv_password_1"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/mulish_extrabold"
+                android:text="PASSWORD"
+                android:textColor="#323F4B"
+                android:textSize="15dp"
+                tools:layout_conversion_absoluteHeight="20dp"
+                tools:layout_conversion_absoluteWidth="731dp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="240dp" />
+
+            <EditText
+                android:id="@+id/Register_user_password"
+                android:layout_width="350dp"
+                android:layout_height="41dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+
+                android:background="@drawable/border"
+                android:ems="10"
+                android:fontFamily="@font/mulish_semibold"
+                android:inputType="textEmailAddress"
+                android:textColor="#7B8794"
+                tools:layout_conversion_absoluteHeight="46dp"
+                tools:layout_conversion_absoluteWidth="731dp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="426dp" />
+
+            <TextView
+                android:id="@+id/tv_nick"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/mulish_extrabold"
+                android:text="NICKNAME"
+                android:textColor="#323F4B"
+                android:textSize="15dp"
+                tools:layout_conversion_absoluteHeight="38dp"
+                tools:layout_conversion_absoluteWidth="42dp"
+                tools:layout_editor_absoluteX="208dp"
+                tools:layout_editor_absoluteY="201dp" />
+
+            <EditText
+                android:id="@+id/Register_user_nickname"
+                android:layout_width="350dp"
+                android:layout_height="41dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/border"
+                android:ems="10"
+                android:inputType="textPassword"
+                tools:layout_conversion_absoluteHeight="46dp"
+                tools:layout_conversion_absoluteWidth="731dp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="259dp" />
+
+            <TextView
+                android:id="@+id/tv_phone1"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/mulish_extrabold"
+                android:text="PHONE"
+                android:textColor="#323F4B"
+                android:textSize="15dp"
+                tools:layout_conversion_absoluteHeight="38dp"
+                tools:layout_conversion_absoluteWidth="42dp"
+                tools:layout_editor_absoluteX="208dp"
+                tools:layout_editor_absoluteY="201dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="20dp"
+                android:gravity="center_horizontal|center_vertical"
+                android:orientation="horizontal">
+
+                <EditText
+                    android:id="@+id/Register_user_phone"
+                    android:layout_width="220dp"
+                    android:layout_height="41dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/border"
+                    android:ems="10"
+                    android:hint="010-1234-5678"
+                    android:inputType="phone"
+                    tools:layout_conversion_absoluteHeight="46dp"
+                    tools:layout_conversion_absoluteWidth="731dp"
+                    tools:layout_editor_absoluteX="0dp"
+                    tools:layout_editor_absoluteY="259dp" />
+
+                <Button
+                    android:id="@+id/Btn_certification"
+                    android:layout_width="wrap_content"
+                    android:layout_height="41dp"
+                    android:background="@drawable/btn_signup"
+                    android:backgroundTint="#292D4C"
+                    android:fontFamily="@font/mulish_bold"
+                    android:text="인증번호 발급"
+                    android:textSize="15dp" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_num1"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/mulish_extrabold"
+                android:text="인증번호"
+                android:textColor="#323F4B"
+                android:textSize="15dp"
+                tools:layout_conversion_absoluteHeight="38dp"
+                tools:layout_conversion_absoluteWidth="42dp"
+                tools:layout_editor_absoluteX="208dp"
+                tools:layout_editor_absoluteY="201dp" />
+
+            <EditText
+                android:id="@+id/Edt_certification"
+                android:layout_width="350dp"
+                android:layout_height="41dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/border"
+                android:ems="10"
+                android:inputType="textPassword"
+                tools:layout_conversion_absoluteHeight="46dp"
+                tools:layout_conversion_absoluteWidth="731dp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="259dp" />
+
+            <Button
+                android:id="@+id/Btn_register"
+                android:layout_width="350dp"
+                android:layout_height="41dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/btn_signup"
+                android:backgroundTint="#292D4C"
+                android:fontFamily="@font/mulish_bold"
+                android:text="회원가입"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="219dp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

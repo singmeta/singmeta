@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_findid_3"
+        android:layout_width="199dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/mulish_bold"
+        android:gravity="center"
+        android:text="아이디 찾기"
+        android:textAppearance="@style/TextAppearance.AppCompat.Large"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_phone_3"
+        android:layout_width="401dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/mulish_extrabold"
+        android:text="PHONE"
+        android:textColor="#323F4B"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_findid_3" />
+
+    <EditText
+        android:id="@+id/Comfirm_phone"
+        android:layout_width="397dp"
+        android:layout_height="48dp"
+
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/border"
+        android:ems="10"
+        android:fontFamily="@font/mulish_semibold"
+        android:hint="⠀010-1234-5678"
+        android:inputType="textEmailAddress"
+        android:textColor="#7B8794"
+        app:layout_constraintBottom_toTopOf="@+id/tv_num_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_phone_3"
+        app:layout_constraintVertical_bias="0.384" />
+
+    <Button
+        android:id="@+id/btn_num_3"
+        android:layout_width="140dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="112dp"
+        android:background="@drawable/btn_signup"
+        android:backgroundTint="#292D4C"
+        android:fontFamily="@font/mulish_bold"
+        android:text="인증번호 발급"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.72"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tv_num_3"
+        android:layout_width="403dp"
+        android:layout_height="19dp"
+        android:layout_marginTop="192dp"
+        android:fontFamily="@font/mulish_extrabold"
+        android:text="인증번호"
+        android:textColor="#323F4B"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.509"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Btn_find_my_id"
+        android:layout_width="404dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="80dp"
+        android:background="@drawable/btn_signup"
+        android:backgroundTint="#292D4C"
+        android:fontFamily="@font/mulish_bold"
+        android:text="아이디 찾기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/Comfirm_certifi_num"
+        android:layout_width="404dp"
+        android:layout_height="48dp"
+
+        android:background="@drawable/border"
+        android:fontFamily="@font/mulish_semibold"
+        android:inputType="textEmailAddress"
+        android:textColor="#7B8794"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.507"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_num_3"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/Btn_main"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:layout_width="404dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="@color/white"
+        android:fontFamily="@font/dm_sans"
+        android:gravity="center"
+        android:text="취소"
+        android:textColor="#BFCCD9"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
