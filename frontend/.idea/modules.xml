@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/retrofit_nodejs.iml" filepath="$PROJECT_DIR$/.idea/modules/retrofit_nodejs.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/retrofit_nodejs.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/retrofit_nodejs.app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Singmeta_01.iml" filepath="$PROJECT_DIR$/.idea/modules/Singmeta_01.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/Singmeta_01.app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/Singmeta_01.app.iml" />
     </modules>
   </component>
 </project>
