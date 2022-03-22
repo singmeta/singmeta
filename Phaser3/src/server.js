@@ -18,7 +18,7 @@ console.log(__dirname + "/src/views");
 
 app.use("/public", express.static(__dirname + "/src/public"));
 
-app.get("/", (req, res) => res.render("main"));
+//app.get("/", (req, res) => res.render("main"));
 app.get("/*", (req, res) => res.redirect("/"));
 
 const handleListen = () => console.log("listening on http:localhost:3002!");
