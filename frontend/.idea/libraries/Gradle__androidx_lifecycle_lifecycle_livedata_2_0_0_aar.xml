@@ -1,17 +1,10 @@
 <component name="libraryTable">
   <library name="Gradle: androidx.lifecycle:lifecycle-livedata:2.0.0@aar">
     <CLASSES>
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1cb4c19a0747461aa679ba30d4bab2d0/transformed/lifecycle-livedata-2.0.0/res" />
-<<<<<<< Updated upstream
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1cb4c19a0747461aa679ba30d4bab2d0/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml" />
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1a0b07ec9ed0dfa0c6225caa49fdc1e6/transformed/lifecycle-livedata-2.0.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1a0b07ec9ed0dfa0c6225caa49fdc1e6/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1a0b07ec9ed0dfa0c6225caa49fdc1e6/transformed/lifecycle-livedata-2.0.0/res" />
-=======
-      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/1a0b07ec9ed0dfa0c6225caa49fdc1e6/transformed/lifecycle-livedata-2.0.0/jars/classes.jar!/" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1a0b07ec9ed0dfa0c6225caa49fdc1e6/transformed/lifecycle-livedata-2.0.0/res" />
-      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/1a0b07ec9ed0dfa0c6225caa49fdc1e6/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml" />
->>>>>>> Stashed changes
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f0f79292e379a663e51755ed3129877a/transformed/lifecycle-livedata-2.0.0/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-3/f0f79292e379a663e51755ed3129877a/transformed/lifecycle-livedata-2.0.0/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-3/f0f79292e379a663e51755ed3129877a/transformed/lifecycle-livedata-2.0.0/res" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>

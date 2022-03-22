@@ -43,6 +43,16 @@
             android:name=".Find_password"
             android:exported="true"
             android:screenOrientation="landscape" />
+
+        <activity
+            android:name=".Room_setting"
+            android:exported="true"
+            android:screenOrientation="landscape"/>
+
+        <activity
+            android:name=".Room_theme"
+            android:exported="true"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>
