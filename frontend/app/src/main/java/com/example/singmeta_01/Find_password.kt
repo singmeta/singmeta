@@ -25,8 +25,7 @@ class Find_password : AppCompatActivity() {
 
 
         btn_main.setOnClickListener{
-            val intent = Intent(this, Login::class.java)
-            startActivity(intent)
+            onBackPressed()
         }
 
     }

@@ -12,6 +12,10 @@
         <entry key="..\:/Users/82106/singmeta/singmeta/frontend/app/src/main/res/layout/room_setting.xml" value="0.3359375" />
         <entry key="..\:/Users/82106/singmeta/singmeta/frontend/app/src/main/res/layout/room_theme.xml" value="0.5" />
         <entry key="app/src/main/res/layout-land/activity_second.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2740628166160081" />
+        <entry key="app/src/main/res/layout/find_id.xml" value="0.2740628166160081" />
+        <entry key="app/src/main/res/layout/find_password.xml" value="0.2740628166160081" />
+        <entry key="app/src/main/res/layout/join_us.xml" value="0.2740628166160081" />
         <entry key="app/src/main/res/layout/login.xml" value="0.23596014492753623" />
       </map>
     </option>

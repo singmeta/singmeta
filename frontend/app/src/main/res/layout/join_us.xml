@@ -42,7 +42,7 @@
             <EditText
                 android:id="@+id/Register_user_email"
                 android:layout_width="350dp"
-                android:layout_height="41dp"
+                android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="50dp"
                 android:background="@drawable/border"
@@ -71,7 +71,7 @@
             <EditText
                 android:id="@+id/Register_user_password"
                 android:layout_width="350dp"
-                android:layout_height="41dp"
+                android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="50dp"
 
@@ -80,6 +80,7 @@
                 android:fontFamily="@font/mulish_semibold"
                 android:inputType="textEmailAddress"
                 android:textColor="#7B8794"
+                tools:ignore="SpeakableTextPresentCheck"
                 tools:layout_conversion_absoluteHeight="46dp"
                 tools:layout_conversion_absoluteWidth="731dp"
                 tools:layout_editor_absoluteX="0dp"
@@ -102,12 +103,13 @@
             <EditText
                 android:id="@+id/Register_user_nickname"
                 android:layout_width="350dp"
-                android:layout_height="41dp"
+                android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="50dp"
                 android:background="@drawable/border"
                 android:ems="10"
                 android:inputType="textPassword"
+                tools:ignore="SpeakableTextPresentCheck"
                 tools:layout_conversion_absoluteHeight="46dp"
                 tools:layout_conversion_absoluteWidth="731dp"
                 tools:layout_editor_absoluteX="0dp"
@@ -144,6 +146,7 @@
                     android:ems="10"
                     android:hint="⠀010-1234-5678"
                     android:inputType="phone"
+                    tools:ignore="TouchTargetSizeCheck"
                     tools:layout_conversion_absoluteHeight="46dp"
                     tools:layout_conversion_absoluteWidth="731dp"
                     tools:layout_editor_absoluteX="0dp"
@@ -157,7 +160,8 @@
                     android:backgroundTint="#292D4C"
                     android:fontFamily="@font/mulish_bold"
                     android:text="인증번호 발급"
-                    android:textSize="15dp" />
+                    android:textSize="15dp"
+                    tools:ignore="TouchTargetSizeCheck" />
 
             </LinearLayout>
 
@@ -179,11 +183,16 @@
             <EditText
                 android:id="@+id/Edt_certification"
                 android:layout_width="350dp"
-                android:layout_height="41dp"
+                android:layout_height="48dp"
                 android:layout_gravity="center"
                 android:layout_marginBottom="40dp"
                 android:background="@drawable/border"
                 android:ems="10"
+<<<<<<< Updated upstream
+=======
+                android:inputType="textPassword"
+                tools:ignore="SpeakableTextPresentCheck"
+>>>>>>> Stashed changes
                 tools:layout_conversion_absoluteHeight="46dp"
                 tools:layout_conversion_absoluteWidth="731dp"
                 tools:layout_editor_absoluteX="0dp"
@@ -192,10 +201,14 @@
             <Button
                 android:id="@+id/Btn_register"
                 android:layout_width="350dp"
-                android:layout_height="41dp"
+                android:layout_height="48dp"
                 android:layout_gravity="center"
+<<<<<<< Updated upstream
                 android:layout_marginTop="30dp"
                 android:layout_marginBottom="50dp"
+=======
+                android:layout_marginBottom="10dp"
+>>>>>>> Stashed changes
                 android:background="@drawable/btn_signup"
                 android:backgroundTint="#292D4C"
                 android:fontFamily="@font/mulish_bold"
@@ -203,6 +216,20 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 tools:layout_editor_absoluteY="219dp" />
+
+            <Button
+                android:id="@+id/Btn_main"
+                android:layout_width="316dp"
+                android:layout_height="56dp"
+                android:layout_marginLeft="48dp"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="10dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/dm_sans"
+                android:stateListAnimator="@null"
+                android:text="취소"
+                android:textColor="#BFCCD9"
+                android:textSize="18dp" />
 
 
         </LinearLayout>
