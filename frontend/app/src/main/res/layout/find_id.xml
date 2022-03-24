@@ -8,7 +8,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:id="@+id/tv_Find_id"
+        android:id="@+id/tv_findid_3"
         android:layout_width="199dp"
         android:layout_height="32dp"
         android:layout_marginTop="28dp"
@@ -21,7 +21,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_Find_id_phoneNum"
+        android:id="@+id/tv_phone_3"
         android:layout_width="401dp"
         android:layout_height="19dp"
         android:layout_marginTop="28dp"
@@ -32,7 +32,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Find_id" />
+        app:layout_constraintTop_toBottomOf="@+id/tv_findid_3" />
 
     <EditText
         android:id="@+id/Comfirm_phone"
@@ -46,19 +46,18 @@
         android:hint="⠀010-1234-5678"
         android:inputType="textEmailAddress"
         android:textColor="#7B8794"
-        app:layout_constraintBottom_toTopOf="@+id/tv_Find_id_certifi"
+        app:layout_constraintBottom_toTopOf="@+id/tv_num_3"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Find_id_phoneNum"
+        app:layout_constraintTop_toBottomOf="@+id/tv_phone_3"
         app:layout_constraintVertical_bias="0.384" />
 
     <Button
-        android:id="@+id/Btn_send_certification"
+        android:id="@+id/btn_num_3"
         android:layout_width="140dp"
         android:layout_height="48dp"
         android:layout_marginTop="112dp"
-        android:background="@drawable/btn_signup"
         android:backgroundTint="#292D4C"
         android:fontFamily="@font/mulish_bold"
         android:text="인증번호 발급"
@@ -68,7 +67,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tv_Find_id_certifi"
+        android:id="@+id/tv_num_3"
         android:layout_width="403dp"
         android:layout_height="19dp"
         android:layout_marginTop="192dp"
@@ -80,6 +79,19 @@
         app:layout_constraintHorizontal_bias="0.509"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Btn_find_my_id"
+        android:layout_width="404dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="80dp"
+        android:backgroundTint="#292D4C"
+        android:fontFamily="@font/mulish_bold"
+        android:text="아이디 찾기"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.51"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
         android:id="@+id/Comfirm_certifi_num"
@@ -94,22 +106,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_Find_id_certifi"
+        app:layout_constraintTop_toBottomOf="@+id/tv_num_3"
         app:layout_constraintVertical_bias="0.0" />
-
-    <Button
-        android:id="@+id/Btn_find_my_id"
-        android:layout_width="404dp"
-        android:layout_height="48dp"
-        android:layout_marginBottom="80dp"
-        android:background="@drawable/btn_signup"
-        android:backgroundTint="#292D4C"
-        android:fontFamily="@font/mulish_bold"
-        android:text="아이디 찾기"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.51"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/Btn_main"

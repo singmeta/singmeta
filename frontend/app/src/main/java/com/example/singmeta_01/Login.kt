@@ -65,20 +65,8 @@ class Login : AppCompatActivity() {
 
 
         btnLogin.setOnClickListener{
-            var loginID = userId.text.toString()
-            var loginPW = userPw.text.toString()
 
-           // Toast.makeText(this,"success", Toast.LENGTH_SHORT).show()
-
-            // 유저가 입력한 id, pw값과 쉐어드로 불러온 id, pw값 비교
-            if(loginID == "asza23@naver.com" && loginPW == "1234"){
-                // 로그인 성공 다이얼로그 보여주기
-                Toast.makeText(this,"success", Toast.LENGTH_SHORT).show()
-            }
-            else{
-                // 로그인 실패 다이얼로그 보여주기
-                Toast.makeText(this,"fail", Toast.LENGTH_SHORT).show()
-            }
+            signinEmail()
         }
 
 
@@ -158,21 +146,22 @@ class Login : AppCompatActivity() {
 //    }
 //
 //
-//    fun signinEmail(){
-//        auth?.signInWithEmailAndPassword(userId.text.toString(),userPw.text.toString())
-//            ?.addOnCompleteListener {
-//                    task ->
-//                if(task.isSuccessful) {
-//                    moveMainPage(task.result?.user)
-//                }
-//                else{
-//                    Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()
-//                }
-//
-//            }
-//    }
+    fun signinEmail(){
+        auth?.signInWithEmailAndPassword(userId.text.toString(),userPw.text.toString())
+            ?.addOnCompleteListener {
+                    task ->
+                if(task.isSuccessful) {
+                    moveMainPage(task.result?.user)
+                    Toast.makeText(this, userId.text.toString(), Toast.LENGTH_LONG).show()
+                }
+                else{
+                    Toast.makeText(this, "아이디/비밀번호가 잘못되었습니다.", Toast.LENGTH_LONG).show()
+                }
 
-    fun moveMainPage(user: FirebaseUser?){ //성공 했을때 메인 페이지로 가도록하는 것
+            }
+    }
+
+    fun moveMainPage(user: FirebaseUser?){ //성공 했을때 메인 페이지로 가도록하는 것 여기서 아이디 넘기는 인텐트 조사해야함
         if(user != null){
             startActivity(Intent(this, MainActivity::class.java))
         }

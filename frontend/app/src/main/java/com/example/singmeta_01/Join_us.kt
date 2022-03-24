@@ -11,8 +11,13 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.singmeta_01.ModelUserInfo.ModelUserInfo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.UserInfo
+import com.google.firebase.firestore.DocumentId
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.ktx.Firebase
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,6 +29,7 @@ import java.io.IOException
 class Join_us : AppCompatActivity(){
     //파이어베이스'
     var auth: FirebaseAuth? = null
+    var dbFirestore : FirebaseFirestore? = null
 
     //레트로핏 추가 ⭐️
     private val TAG = "MainActivityLog"
@@ -45,6 +51,8 @@ class Join_us : AppCompatActivity(){
         setContentView(R.layout.join_us)
 
         auth = FirebaseAuth.getInstance()
+        dbFirestore = FirebaseFirestore.getInstance()
+
 
 
         //비어 있는지 확인
@@ -155,7 +163,29 @@ class Join_us : AppCompatActivity(){
             ?.addOnCompleteListener {
                     task ->
                 if (task.isSuccessful) {   //성공했을시 moverMainpage로 user 값 넘겨주면서 화면이동
+//                    var account :ModelUserInfo? = null
+//                    account.
+
+                    val accountData = hashMapOf(
+                        "phoneNumber" to register_user_phone.text.toString(),
+                        "email" to  auth?.currentUser?.email.toString(),
+                        "nickname" to register_user_nickname.text.toString(),
+                        "uid" to auth?.uid.toString()
+                    )
+
+
+                    dbFirestore!!.collection("UserInfoDataBase")
+                        .add(accountData)
+                        .addOnSuccessListener {
+                            Toast.makeText(this, "success", Toast.LENGTH_LONG).show()
+                        }
+                        .addOnFailureListener { exception ->
+                            // 실패할 경우
+                            Toast.makeText(this, "fail", Toast.LENGTH_LONG).show()
+                        }
+
                     moveMainPage(task.result?.user)
+
                 }
                 else if (task.exception?.message.isNullOrEmpty()) {      //오류
                     Toast.makeText(this, task.exception?.message, Toast.LENGTH_LONG).show()

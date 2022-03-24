@@ -98,7 +98,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginStart="210dp"
-            android:background="@drawable/btn_round"
+            android:backgroundTint="#292D4C"
             android:text="방 만들기" />
 
         <Button
@@ -107,7 +107,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
             android:layout_marginStart="80dp"
-            android:background="@drawable/btn_round_2"
+            android:backgroundTint="#292D4C"
             android:text="뒤로가기" />
 
     </LinearLayout>
