@@ -1,4 +1,4 @@
-package com.example.singmeta_01
+package com.example.singmeta_01.ApiService
 
 import okhttp3.ResponseBody
 import retrofit2.Call
