@@ -14,6 +14,8 @@ class Room_theme : AppCompatActivity() {
     lateinit var btn_Theme3 : Button
     lateinit var btn_Theme4 : Button
 
+    lateinit var btn_main : Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.room_theme)
@@ -23,6 +25,8 @@ class Room_theme : AppCompatActivity() {
         btn_Theme2 = findViewById(R.id.Btn_Theme2)
         btn_Theme3 = findViewById(R.id.Btn_Theme3)
         btn_Theme4 = findViewById(R.id.Btn_Theme4)
+        btn_main =findViewById(R.id.Btn_main)
+
 
         val roomIntent = Intent(applicationContext, Room_setting::class.java)
 
@@ -51,6 +55,11 @@ class Room_theme : AppCompatActivity() {
 
         btn_MakeRoom.setOnClickListener{
             startActivity(roomIntent)
+        }
+
+
+        btn_main.setOnClickListener{
+            onBackPressed()
         }
 
 
