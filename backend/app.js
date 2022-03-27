@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 // var retrofitRouter = require('./routes/retrofit');
 var audioRouter = require('./routes/audio');
 var roomRouter = require('./routes/room');
+var memberRouter = require('./routes/member.js');
 
 var app = express();
 
@@ -27,6 +28,7 @@ app.use('/users', usersRouter);
 // app.use('/retrofit', retrofitRouter);
 app.use('/audio', audioRouter);
 app.use('/room', roomRouter);
+app.use('/member', memberRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
