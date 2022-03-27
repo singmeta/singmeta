@@ -96,18 +96,20 @@
             android:id="@+id/Btn_MakeRoom"
             android:layout_width="265dp"
             android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:background="@drawable/radius_btn"
             android:layout_gravity="bottom"
             android:layout_marginStart="210dp"
-            android:backgroundTint="#292D4C"
             android:text="방 만들기" />
 
         <Button
-            android:id="@+id/Btn_Back"
+            android:id="@+id/Btn_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            android:textColor="@color/white"
+            android:background="@drawable/radius_btn"
             android:layout_marginStart="80dp"
-            android:backgroundTint="#292D4C"
             android:text="뒤로가기" />
 
     </LinearLayout>

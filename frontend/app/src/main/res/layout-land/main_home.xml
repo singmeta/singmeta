@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/main_background"
+    tools:ignore="MissingDefaultResource">
+
+    <Button
+        android:id="@+id/Btn_notice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#00FF0000"
+        android:drawableTop="@drawable/main_notice"
+        android:fontFamily="@font/mulish_extrabold"
+        android:stateListAnimator="@null"
+        android:text="공지사항"
+        app:layout_constraintBottom_toTopOf="@+id/Btn_playlist"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/Btn_chart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="624dp"
+        android:layout_marginBottom="256dp"
+        android:backgroundTint="#00FF0000"
+        android:drawableTop="@drawable/main_chart"
+        android:fontFamily="@font/mulish_extrabold"
+        android:stateListAnimator="@null"
+        android:text="실시간차트"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+    <Button
+        android:id="@+id/Test_btnRoom"
+        android:layout_width="200dp"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:text="방 만들기"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Btn_playlist"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="620dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#00FF0000"
+        android:drawableTop="@drawable/main_playlist"
+        android:fontFamily="@font/mulish_extrabold"
+        android:stateListAnimator="@null"
+        android:text="플레이리스트"
+        app:layout_constraintBottom_toTopOf="@+id/Btn_mypage"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/Btn_mypage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="632dp"
+        android:layout_marginBottom="28dp"
+        android:backgroundTint="#00FF0000"
+        android:drawableTop="@drawable/main_mypage"
+        android:fontFamily="@font/mulish_extrabold"
+        android:stateListAnimator="@null"
+        android:text="마이페이지"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <ImageButton
+        android:id="@+id/Ibtn_Exits"
+        android:layout_width="71dp"
+        android:layout_height="74dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="#00FF0000"
+        android:fontFamily="@font/mulish_extrabold"
+        android:src="@drawable/main_exits"
+        android:stateListAnimator="@null"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/Btn_Profile_modify"
+        android:layout_width="103dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="40dp"
+        android:backgroundTint="#00FF0000"
+        android:fontFamily="@font/mulish_extrabold"
+        android:gravity="top"
+        android:stateListAnimator="@null"
+        android:text="프로필수정"
+        android:textSize="13dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageButton
+        android:id="@+id/Ibtn_entry"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:layout_marginBottom="8dp"
+        android:backgroundTint="#00FF0000"
+        android:stateListAnimator="@null"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/main_entry" />
+
+    <ImageView
+        android:id="@+id/User_profile"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/profile"
+        android:clipToOutline="true"
+        android:scaleType="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/image_1" />
+
+    <ImageView
+        android:id="@+id/User_Character"
+        android:layout_width="153dp"
+        android:layout_height="250dp"
+        android:backgroundTint="#00FF0000"
+        android:layout_marginTop="74dp"
+        android:layout_marginBottom="88dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/user_ex" />
+
+    <TextView
+        android:id="@+id/tv_UserNickname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:fontFamily="@font/mulish_extrabold"
+        android:gravity="left|bottom"
+        android:text="User123"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="74dp"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

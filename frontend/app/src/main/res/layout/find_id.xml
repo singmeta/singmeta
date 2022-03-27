@@ -53,26 +53,13 @@
         app:layout_constraintTop_toBottomOf="@+id/tv_phone_3"
         app:layout_constraintVertical_bias="0.384" />
 
-    <Button
-        android:id="@+id/btn_num_3"
-        android:layout_width="140dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="112dp"
-        android:backgroundTint="#292D4C"
-        android:fontFamily="@font/mulish_bold"
-        android:text="인증번호 발급"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.72"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/tv_num_3"
         android:layout_width="403dp"
         android:layout_height="19dp"
         android:layout_marginTop="192dp"
         android:fontFamily="@font/mulish_extrabold"
-        android:text="인증번호"
+        android:text="아이디"
         android:textColor="#323F4B"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -85,7 +72,8 @@
         android:layout_width="404dp"
         android:layout_height="48dp"
         android:layout_marginBottom="80dp"
-        android:backgroundTint="#292D4C"
+        android:textColor="@color/white"
+        android:background="@drawable/radius_btn"
         android:fontFamily="@font/mulish_bold"
         android:text="아이디 찾기"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -93,15 +81,17 @@
         app:layout_constraintHorizontal_bias="0.51"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <EditText
-        android:id="@+id/Comfirm_certifi_num"
+    <TextView
+        android:id="@+id/FoundUserID"
         android:layout_width="404dp"
         android:layout_height="48dp"
-
         android:background="@drawable/border"
         android:fontFamily="@font/mulish_semibold"
+        android:gravity="center"
         android:inputType="textEmailAddress"
         android:textColor="#7B8794"
+        android:textSize="25sp"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.507"
@@ -118,6 +108,7 @@
         android:backgroundTint="@color/white"
         android:fontFamily="@font/dm_sans"
         android:gravity="center"
+        android:background="@drawable/radius"
         android:text="취소"
         android:textColor="#BFCCD9"
         android:textSize="16dp"
