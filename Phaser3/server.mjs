@@ -18,7 +18,12 @@ console.log(__dirname + "/src/views");
 app.use("/public", express.static(__dirname + "/src/public"));
 
 app.get("/", (req, res) => res.render("main.pug"));
-app.get("/*", (req, res) => res.redirect("/"));
+//app.get("/*", (req, res) => res.redirect("/"));
+
+app.get("/helloworld", (req, res) => {
+  console.log("this is node");
+  res.render("main.pug");
+});
 
 const handleListen = () => console.log("listening on http:localhost:3002!");
 //app.listen(3000, handleListen);
