@@ -4,6 +4,7 @@ import express from "express";
 import { Socket } from "dgram";
 import { Server } from "socket.io";
 import path from "path";
+
 const __dirname = path.resolve();
 
 const app = express();
@@ -21,6 +22,11 @@ app.get("/", (req, res) => res.render("main.pug"));
 //app.get("/*", (req, res) => res.redirect("/"));
 
 app.get("/helloworld", (req, res) => {
+  console.log("this is node");
+  res.render("main.pug");
+});
+
+app.get("/helloserver", (req, res) => {
   console.log("this is node");
   res.render("main.pug");
 });

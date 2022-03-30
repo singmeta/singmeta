@@ -10,9 +10,9 @@ let onlinePlayers = [];
 */
 console.log(window.location.pathname);
 
-var client = new Colyseus.Client("ws://localhost:3002");
+var client = new Colyseus.Client("ws://localhost:3000");
 let room = client
-  .joinOrCreate(window.location.pathname)
+  .joinOrCreate("poke_world")
   .then((room) => {
     console.log(room.name);
     console.log(room.sessionId, "joined", room.name);
