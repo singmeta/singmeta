@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="MissingDefaultResource">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginRight="10dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <Button
+                android:id="@+id/Make_room"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="138dp"
+                android:background="@drawable/radius_btn"
+                android:fontFamily="@font/mulish_bold"
+                android:text="방 만들기" />
+
+            <Button
+                android:id="@+id/tv_BestRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/mulish_extrabold"
+                android:includeFontPadding="false"
+                android:text="인기순"
+                android:textColor="#3E314F"
+                android:textSize="20dp" />
+
+            <Button
+                android:id="@+id/tv_NewRoom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@android:color/transparent"
+                android:fontFamily="@font/mulish_extrabold"
+                android:text="최신순"
+                android:textColor="#A199AC"
+                android:textSize="18dp" />
+
+            <ImageButton
+                android:id="@+id/Ibtn_Refresh"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center|right"
+                android:layout_marginLeft="200dp"
+                android:background="@android:color/transparent"
+                app:srcCompat="@drawable/refresh" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:gravity="center">
+
+            <EditText
+                android:id="@+id/edt_Search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+
+                android:ems="10"
+                android:inputType="textPersonName" />
+
+            <ImageView
+                android:id="@+id/iv_Search"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="5dp"
+                android:src="@drawable/search" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="255dp"
+        android:layout_gravity="center"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/room1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:drawableTop="@drawable/user1"
+                        android:fontFamily="@font/mulish_extrabold"
+                        android:text="방구석콘서트\n 99/100명"
+                        android:textColor="#323F4B" />
+
+                    <Button
+                        android:id="@+id/room2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:drawableTop="@drawable/user2"
+                        android:fontFamily="@font/mulish_extrabold"
+                        android:text="드루와\n 99/100명"
+                        android:textColor="#323F4B" />
+
+                    <Button
+                        android:id="@+id/room3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:drawableTop="@drawable/user3"
+                        android:fontFamily="@font/mulish_extrabold"
+                        android:text="고막남친\n 99/100명"
+                        android:textColor="#323F4B" />
+
+                    <Button
+                        android:id="@+id/room4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:drawableTop="@drawable/user4"
+                        android:fontFamily="@font/mulish_extrabold"
+                        android:text="달달노래\n 99/100명"
+                        android:textColor="#323F4B" />
+
+                    <Button
+                        android:id="@+id/room5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:drawableTop="@drawable/user5"
+                        android:fontFamily="@font/mulish_extrabold"
+                        android:text="팝송전문\n 99/100명"
+                        android:textColor="#323F4B" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/room6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:background="@android:color/transparent"
+                        android:drawableTop="@drawable/user6"
+                        android:fontFamily="@font/mulish_extrabold"
+                        android:text="방구석콘서트\n 99/100명"
+                        android:textColor="#323F4B" />
+
+                    <Button
+                        android:id="@+id/room7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:drawableTop="@drawable/user7"
+                        android:fontFamily="@font/mulish_extrabold"
+                        android:text="코노\n 99/100명"
+                        android:textColor="#323F4B" />
+
+                    <Button
+                        android:id="@+id/room8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:drawableTop="@drawable/user8"
+                        android:fontFamily="@font/mulish_extrabold"
+                        android:text="뮤직어워드\n 99/100명"
+                        android:textColor="#323F4B" />
+
+                    <Button
+                        android:id="@+id/room9"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:drawableTop="@drawable/user9"
+                        android:fontFamily="@font/mulish_extrabold"
+                        android:text="OO의 노래방\n 99/100명"
+                        android:textColor="#323F4B" />
+
+                    <Button
+                        android:id="@+id/room10"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:background="@android:color/transparent"
+                        android:drawableTop="@drawable/user3"
+                        android:fontFamily="@font/mulish_extrabold"
+                        android:text="혼코노\n 99/100명"
+                        android:textColor="#323F4B" />
+                </TableRow>
+
+            </TableLayout>
+
+
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginBottom="3dp"
+        android:gravity="right"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/Btn_main"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_marginEnd="48dp"
+            android:background="@drawable/radius_btn"
+            android:fontFamily="@font/mulish_bold"
+            android:text="뒤로가기"
+            android:textColor="@color/white" />
+
+    </LinearLayout>
+
+</LinearLayout>

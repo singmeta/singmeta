@@ -16,8 +16,23 @@
         >
         <activity
             android:name=".MainActivity"
-            android:exported="false"
-            android:screenOrientation="landscape"/>
+            android:exported="true"
+            android:screenOrientation="landscape">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".Pop_up_Notice"
+            android:exported="true"
+            android:screenOrientation="landscape">
+
+        </activity>
+
+
         <activity
             android:name=".Join_us"
             android:exported="true"
@@ -31,12 +46,16 @@
             android:name=".Login"
             android:exported="true"
             android:screenOrientation="landscape">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
+
+        <activity
+            android:name=".EntryActivity"
+            android:exported="true"
+            android:screenOrientation="landscape">
+
+        </activity>
+
         <activity
             android:name=".Find_id"
             android:exported="true"
