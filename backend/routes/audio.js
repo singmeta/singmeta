@@ -3,8 +3,8 @@
  */
  const express = require('express');
  const router = express.Router();
+ const config = require('../config/key');
  const multer = require('multer');
- const mongoose = require('mongoose');
  const { ObjectID } = require('mongodb');
  const { createModel } = require('mongoose-gridfs');
  const { Readable } = require('stream');
@@ -18,17 +18,14 @@
  /**
   * Connect Mongo Driver to MongoDB.
   */
- mongoose.connect("mongodb://localhost:27017/trackDB", {
-     useNewUrlParser: true
- }).then(()=> {
-     console.log("Connected to MongoDB");
-    // router.listen(8080, function(){ // 함수 안에 함수 : 콜백함수 -> 순차적으로 실행하고 싶을 때 씀
-    // console.log('listening on 8080');
-    // }); 
-     Attachment = createModel();
- }).catch((error) => {
-     console.error(error);
- });
+  const mongoose = require('mongoose');
+  mongoose.connect(config.mongoURI, {})
+  .then(() => {
+      console.log('MongoDB Connected...')
+    
+      Attachment = createModel();
+    })
+  .catch(err => console.log(err))
  
  /**
   * GET /audio/:trackID

@@ -1,20 +1,18 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
+const config = require('../config/key');
+const {Room} = require("../models/Room")
+const {Count} = require("../models/Count")
+var CurrentTime = require("../functions/function");
 
-const MongoClient = require('mongodb').MongoClient;
+const mongoose = require('mongoose');
+mongoose.connect(config.mongoURI, {})
+.then(() => console.log('MongoDB Connected...'))
+.catch(err => console.log(err))
 
-// 몽고디비 연결
-var db;
-MongoClient.connect('mongodb://localhost:27017/', function(에러, client){
-    if(에러) {
-        return console.log(에러);
-    }
+// 방 만들기
+router.post('/createRoom', (req, res) => {
 
-    db = client.db('SINGMETA');
-});
-
-// 방 만들기 : 테마(themeNum), 방이름(roomName), 인원수(headCount), 비밀번호 유무(pw_YN), 비밀번호(pw)
-router.post('/createRoom', function (req, res, next) {
     if(!req.body.themeNum) { // 변경가능
         console.log("No themeNum in request body");
         return res.status(400).json({ message: "No themeNum in request body" });
@@ -29,76 +27,80 @@ router.post('/createRoom', function (req, res, next) {
         return res.status(400).json({ message: "No password in request body" });
     } 
 
-    console.log('POST 호출 / roomName : ' + req.body.roomName);
-    console.log('path : ' + req.path);
+  const room = new Room(req.body)
 
-    db.collection('roomCount').findOne({name : 'totalCount'}, function(err, res){
-        console.log(res.totalCount);
-        var totalCount = res.totalCount;
+  Count.findOne({name:'roomCount'}, (err, count) => {
 
-        db.collection('room').insertOne({_id:totalCount + 1, Theme:req.body.themeNum, roomName:req.body.roomName, headCount:req.body.headCount, pw_YN:req.body.pw_YN, pw:req.body.pw}, function(err, res){
-            console.log(`${req.body.roomName} 저장완료`);
+    if(!count){
+      return res.status(400).json({
+        success: false,
+        message: "roomCount가 없음"
+      })
+    }
 
-            db.collection('roomCount').updateOne({name : 'totalCount'}, { $inc : {totalCount:1} }, function(err, res){
-                if(err) {
-                    return console.log(err);
-                }
-            });
-            
-        });
-    });
+    room.id = count.totalCount;
+    room.reg_date = CurrentTime.getCurrentDate();
 
-    res.send('post success');
-});
+    room.save((err, roomInfo) => {
+      if(err) {
+        return res.status(400).json({roomCreateSuccess:false, err})
+      }
+
+      Count.findOneAndUpdate({name:"roomCount"}, {$inc:{totalCount: 1}}, (err, roomInfo) => {
+        if(err) {
+          return res.status(400).json({countUpdateSuccess:false, err})
+        }
+
+        return res.status(200).json({success: true})
+      })
+    })
+  })
+
+})
 
 // 모든 방 조회
-router.get('/getRooms', function (req, res, next) {
-    console.log('GET 호출 / data : ' + req.query.data);
-    console.log('path : ' + req.path);
-    let list;
+router.get('/getRooms', (req, res) => {
 
-    db.collection('room').find().toArray(function(err, res){
-        list = res;
-        console.log(res);
+    Room.find({}, (error, list) => {
+        res.status(200).send({ rooms: list });
     });
 
-    res.send(200, {rooms : list});
-});
+})
 
 // 특정 방 조회
-// router.get('/getRoom', function (req, res, next) {
-//     console.log('GET 호출 / data : ' + req.query.data);
-//     console.log('path : ' + req.path);
-//     let list;
+router.get('/getRoom/:id', (req, res) => {
 
-//     db.collection('room').find().toArray(function(err, res){
-//         list = res;
-//         console.log(res);
-//     });
+    Room.findOne({id:req.params.id}, (err, room) => {
+        if(!room){
+          return res.json({
+            roomFindSuccess: false,
+            message: "해당 Room이 존재하지 않습니다."
+          })
+        }
 
-//     res.send('get success', {rooms : list});
-// });
+        res.status(200).send(room);
+    })
+})
 
-// router.put('/put/:id', function (req, res, next) {
-//     console.log('UPDATE 호출 / id : ' + req.params.id);
-//     console.log('body : ' + req.body.data);
-//     console.log('path : ' + req.path);
+// 방 입장 -> 비밀번호 유무 상관없이 가능
+router.get('/enterRoom/:id', (req, res) => {
 
-//     db.collection('memo').updateOne({id : req.params.id}, { $set : {title:req.body.title, data:req.body.data} }, function(err, res){
-//         if(err) {
-//             return console.log(err);
-//         }
-//     });
+    // 방 찾기
+    Room.findOne({id:req.params.id}, (err, room) => {
+      if(!room){
+        return res.json({
+          enterRoomSuccess: false,
+          message: "해당 Room이 존재하지 않습니다."
+        })
+      }
+      
+      if(room.pw_YN == "Y" && room.pw !== req.body.pw) {
+        return res.json({enterRoomSuccess: false, message:"비밀번호가 틀렸습니다."})
+      }
 
-//     res.send('put success')
-// });
+      res.json({enterRoomSuccess: true})
 
-// router.delete('/delete/:id', function (req, res, next) {
-//     console.log('DELETE 호출 / id : ' + req.params.id);
-//     console.log('path : ' + req.path);
-//     res.send('delete success')
-// });
-
-
+    })
+  })
 
 module.exports = router;
