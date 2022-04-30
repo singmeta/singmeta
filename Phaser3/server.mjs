@@ -22,12 +22,12 @@ app.get("/", (req, res) => res.render("main.pug"));
 //app.get("/*", (req, res) => res.redirect("/"));
 
 app.get("/helloworld", (req, res) => {
-  console.log("this is node");
+  console.log("helloworld selected");
   res.render("main.pug");
 });
 
 app.get("/helloserver", (req, res) => {
-  console.log("this is node");
+  console.log("helloserver selected");
   res.render("main.pug");
 });
 

@@ -25,6 +25,9 @@ export class Scene2 extends Phaser.Scene {
   create() {
     room.then((room) =>
       room.onMessage((data) => {
+        console.log(data.players);
+        console.log(data);
+        console.log(data.event);
         if (data.event === "CURRENT_PLAYERS") {
           console.log("CURRENT_PLAYERS");
 
