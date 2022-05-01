@@ -24,6 +24,35 @@
             android:gravity="fill_vertical"
             android:orientation="vertical">
 
+
+            <TextView
+                android:id="@+id/tv_name"
+                android:layout_width="350dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:fontFamily="@font/mulish_extrabold"
+                android:text="이름"
+                android:textColor="#323F4B"
+                android:textSize="15dp"
+                tools:layout_conversion_absoluteHeight="38dp"
+                tools:layout_conversion_absoluteWidth="42dp"
+                tools:layout_editor_absoluteX="208dp"
+                tools:layout_editor_absoluteY="201dp" />
+
+            <EditText
+                android:id="@+id/Register_name"
+                android:layout_width="350dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/border"
+                android:ems="10"
+                tools:ignore="SpeakableTextPresentCheck"
+                tools:layout_conversion_absoluteHeight="46dp"
+                tools:layout_conversion_absoluteWidth="731dp"
+                tools:layout_editor_absoluteX="0dp"
+                tools:layout_editor_absoluteY="259dp" />
+
             <TextView
                 android:id="@+id/tv_email_1"
                 android:layout_width="350dp"

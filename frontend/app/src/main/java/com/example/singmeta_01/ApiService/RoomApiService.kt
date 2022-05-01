@@ -11,13 +11,28 @@ interface RoomApiService {
 
     @FormUrlEncoded
     @POST("/room/createRoom")
-    fun postRoomInfoFunc(@Field("themeNum" ) themeNum: Int,
+    fun postRoomInfoFunc(@Field("themeNum" ) themeNum: String,
+                         @Field("roomName" ) roomName: String,
+                         @Field("headCount" ) headCount: Int,
+                         @Field("pw_YN" ) pw_YN: String)
+
+    : Call<ResponseBody>
+
+
+    @FormUrlEncoded
+    @POST("/room/createRoom")
+    fun postPwRoomInfoFunc(@Field("themeNum" ) themeNum: String,
                          @Field("roomName" ) roomName: String,
                          @Field("headCount" ) headCount: Int,
                          @Field("pw_YN" ) pw_YN: String,
                          @Field("pw" ) pw: String)
-    : Call<ResponseBody>
+            : Call<ResponseBody>
 
+
+//    @FormUrlEncoded
+//    @POST("/retrofit/post")
+//    fun postFunc(@Field("data") data: String?): Call<ResponseBody>
+//
 //    @FormUrlEncoded
 //    @PUT("/retrofit/put/{id}")
 //    fun putFunc(@Path("id") id: String?, @Field("data") data: String?): Call<ResponseBody>

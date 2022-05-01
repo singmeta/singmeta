@@ -11,28 +11,25 @@ import android.view.Window
 import android.widget.Button
 import android.widget.ImageButton
 import androidx.appcompat.app.AlertDialog
+import kotlinx.android.synthetic.main.main_home.*
 
 class MainActivity : AppCompatActivity() {
-    lateinit var ibtn_entry : ImageButton
-    lateinit var btn_notice : Button
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_home)
 
-        ibtn_entry = findViewById(R.id.Ibtn_entry)
-        btn_notice = findViewById(R.id.Btn_notice)
-
 
         //공지사항 이벤트
-        btn_notice.setOnClickListener{
+        Btn_notice.setOnClickListener{
             showNoticePopUp()
         }
 
 
 
         //방 리스트 화면으로 전환
-        ibtn_entry.setOnClickListener{
+        Ibtn_entry.setOnClickListener{
             val intentId = Intent(applicationContext, EntryActivity::class.java).run {
                 startActivity(this)
             }

@@ -10,13 +10,9 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.find_id.*
 
 class Find_id : AppCompatActivity() {
-
-    lateinit var btn_main : Button
-    lateinit var btn_find_my_id : Button
-    lateinit var comfirm_phone : EditText
-    lateinit var foundUserID : TextView
 
     var dbFirestore : FirebaseFirestore? = null
 
@@ -27,21 +23,16 @@ class Find_id : AppCompatActivity() {
 
         dbFirestore = FirebaseFirestore.getInstance()
 
-        btn_main =findViewById(R.id.Btn_main)
-        btn_find_my_id = findViewById(R.id.Btn_find_my_id)
-        comfirm_phone = findViewById(R.id.Comfirm_phone)
-        foundUserID = findViewById(R.id.FoundUserID)
+        var comfirmPhoneNum:String = Comfirm_phone.text.toString()
 
-        var comfirmPhoneNum:String = comfirm_phone.text.toString()
-
-        btn_find_my_id.setOnClickListener{
-            foundUserID.visibility = View.VISIBLE
+        Btn_find_my_id.setOnClickListener{
+            FoundUserID.visibility = View.VISIBLE
             findId(comfirmPhoneNum)
 
         }
 
 
-        btn_main.setOnClickListener{
+        Btn_main.setOnClickListener{
             onBackPressed()
         }
 
@@ -56,9 +47,9 @@ class Find_id : AppCompatActivity() {
                 // 성공할 경우
                 Toast.makeText(this, "블러오기 성공 ", Toast.LENGTH_SHORT).show()
                 for (document in result) {  // 가져온 문서들은 result에 들어감
-                      if(document["phoneNumber"] as String == comfirm_phone.text.toString()){
+                      if(document["phoneNumber"] as String == Comfirm_phone.text.toString()){
                         //Toast.makeText(this, document["email"] as String, Toast.LENGTH_SHORT).show()
-                          foundUserID.setText(document["email"] as String)
+                          FoundUserID.setText(document["email"] as String)
                     }
                 }
             }

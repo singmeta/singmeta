@@ -10,22 +10,16 @@ import android.view.Window
 import android.widget.Button
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.entry.*
 
 
 class EntryActivity : AppCompatActivity() {
 
-    lateinit var make_room : Button
-    lateinit var room1 : Button
-    lateinit var btn_main : Button
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.entry)
-        make_room = findViewById(R.id.Make_room)
-        btn_main =findViewById(R.id.Btn_main)
-        room1 = findViewById(R.id.room1)
 
-        make_room.setOnClickListener{
+        Make_room.setOnClickListener{
             val intentId = Intent(applicationContext, Room_theme::class.java).run {
                 startActivity(this)
             }
@@ -35,7 +29,7 @@ class EntryActivity : AppCompatActivity() {
             showPasswordPopUp()
         }
 
-        btn_main.setOnClickListener{
+        Btn_main.setOnClickListener{
             onBackPressed()
         }
 

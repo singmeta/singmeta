@@ -10,14 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import kotlinx.android.synthetic.main.find_password.*
 
 class Find_password : AppCompatActivity() {
-
-    lateinit var btn_send_email: Button
-    lateinit var btn_main : Button
-
-    lateinit var comfirm_email: EditText
-
 
     var auth: FirebaseAuth? = null
 
@@ -27,16 +22,13 @@ class Find_password : AppCompatActivity() {
 
         auth = FirebaseAuth.getInstance()
 
-        btn_send_email = findViewById(R.id.Btn_send_email)
-        btn_main =findViewById(R.id.Btn_main)
 
-
-        btn_send_email.setOnClickListener{
-            resetPassword(comfirm_email.text.toString())
+        Btn_send_email.setOnClickListener{
+            resetPassword(Comfirm_email.text.toString())
         }
 
 
-        btn_main.setOnClickListener{
+        Btn_main.setOnClickListener{
             onBackPressed()
         }
 
