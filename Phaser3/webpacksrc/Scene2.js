@@ -25,15 +25,24 @@ export class Scene2 extends Phaser.Scene {
   create() {
     room.then((room) =>
       room.onMessage((data) => {
-        if (data.event === "CURRENT_PLAYERS") {
+        console.log(data);
+        console.log(room);
+        if (data.event === `CURRENT_PLAYERS_${room.name}`) {
           console.log("CURRENT_PLAYERS");
 
           Object.keys(data.players).forEach((playerId) => {
             let player = data.players[playerId];
 
-            if (playerId !== room.sessionId) {
+            console.log(playerId);
+            console.log(room.sessionId);
+
+            console.log(room.name);
+            console.log(player.roomName);
+
+            if (playerId !== room.sessionId && room.name === player.roomName) {
               onlinePlayers[player.sessionId] = new OnlinePlayer({
                 scene: this,
+                roomId: room.name,
                 playerId: player.sessionId,
                 key: player.sessionId,
                 map: player.map,
@@ -43,12 +52,13 @@ export class Scene2 extends Phaser.Scene {
             }
           });
         }
-        if (data.event === "PLAYER_JOINED") {
+        if (data.event === `PLAYER_JOINED_${room.name}`) {
           console.log("PLAYER_JOINED");
 
           if (!onlinePlayers[data.sessionId]) {
             onlinePlayers[data.sessionId] = new OnlinePlayer({
               scene: this,
+              roomId: room.name,
               playerId: data.sessionId,
               key: data.sessionId,
               map: data.map,
