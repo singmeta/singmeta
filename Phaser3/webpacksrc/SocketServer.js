@@ -1,5 +1,5 @@
 import * as Colyseus from "colyseus.js";
-
+import "regenerator-runtime/runtime";
 /*================================================
 | Array with current online players
 */
@@ -12,13 +12,30 @@ console.log(window.location.pathname);
 
 var client = new Colyseus.Client("ws://localhost:3000");
 
-client.push("helloworld");
-
 let room = client
   .joinOrCreate(window.location.pathname)
-  .then((room) => {
-    console.log("room created !!!!!");
-    return room;
+  .then(async (room) => {
+    await console.log("room created !!!!!");
+
+    roomname = await window.location.pathname;
+
+    await conosole.log(roomname);
+
+    await fetch("/", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        roomname,
+      }),
+    })
+      .then((res) => {
+        return res.json();
+      })
+      .then((data) => console.log(data));
+
+    return await room;
     /*
     console.log("front 1")
     console.log(room)

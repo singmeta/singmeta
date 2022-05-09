@@ -3,11 +3,12 @@ const webpack = require("webpack");
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+
+entry: ["regenerator-runtime/runtime.js", "<your enter js file>"];
+
 module.exports = {
   mode: "development",
-  entry: {
-    main: "./webpacksrc",
-  },
+  entry: ["regenerator-runtime/runtime.js", "./webpacksrc"],
   output: {
     path: path.resolve("./dist"),
     filename: "bundle.js",
