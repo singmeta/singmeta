@@ -11,6 +11,9 @@ let onlinePlayers = [];
 console.log(window.location.pathname);
 
 var client = new Colyseus.Client("ws://localhost:3000");
+
+client.push("helloworld");
+
 let room = client
   .joinOrCreate(window.location.pathname)
   .then((room) => {
