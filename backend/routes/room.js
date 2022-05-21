@@ -14,8 +14,10 @@ mongoose
   .catch((err) => console.log(err));
 
 // 방 만들기
-router.post("/createRoom", (req, res) => {
-  var client = new Colyseus.Client("ws://localhost:3000");
+router.get("/createRoom", (req, res) => {
+  //var client = new Colyseus.Client("ws://localhost:3000");
+  res.render("main.pug");
+  /*
 
   if (!req.body.themeNum) {
     // 변경가능
@@ -37,7 +39,10 @@ router.post("/createRoom", (req, res) => {
 
   const room = new Room(req.body);
 
-  client.create("custom", { name: "hello", password: "N" });
+  //  var roominfo = client
+  //   .create("custom", { name: "hello", password: "N" })
+  //  .then((room) => console.log(room));
+  // console.log(roominfo);
 
   Count.findOne({ name: "roomCount" }, (err, count) => {
     if (!count) {
@@ -68,6 +73,7 @@ router.post("/createRoom", (req, res) => {
       );
     });
   });
+  */
 });
 
 // 모든 방 조회
