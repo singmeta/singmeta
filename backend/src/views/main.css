@@ -1,0 +1,46 @@
+.main_container {
+  width: 740px;
+  height: 360px;
+  background-color: green;
+  flex-direction: row;
+  display: flex;
+}
+
+.first_bar {
+  width: 30px;
+  height: 360px;
+  background-color: #21253e;
+  flex-direction: column;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.second_bar {
+  width: 100px;
+  height: 360px;
+  background-color: #292d4c;
+}
+
+.hello {
+  position: relative;
+  padding: 10px;
+  background-color: #a8ddfd;
+  width: 65px;
+  height: 10px;
+  text-align: left;
+  font-size: 10px;
+  border: 1px solid #97c6e3;
+  border-radius: 10px;
+}
+.bolo {
+  font-size: 11px;
+}
+.display {
+  height: 300px;
+
+  border-radius: 16px;
+}
+
+.scroll {
+  display: block;
+}

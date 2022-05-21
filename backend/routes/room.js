@@ -1,92 +1,105 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const config = require('../config/key');
-const {Room} = require("../models/Room")
-const {Count} = require("../models/Count")
+const config = require("../config/key");
+const { Room } = require("../models/Room");
+const { Count } = require("../models/Count");
 var CurrentTime = require("../functions/function");
 
-const mongoose = require('mongoose');
-mongoose.connect(config.mongoURI, {})
-.then(() => console.log('MongoDB Connected...'))
-.catch(err => console.log(err))
+const Colyseus = require("colyseus.js");
+
+const mongoose = require("mongoose");
+mongoose
+  .connect(config.mongoURI, {})
+  .then(() => console.log("MongoDB Connected..."))
+  .catch((err) => console.log(err));
 
 // 방 만들기
-router.post('/createRoom', (req, res) => {
+router.post("/createRoom", (req, res) => {
+  var client = new Colyseus.Client("ws://localhost:3000");
 
-    if(!req.body.themeNum) { // 변경가능
-        console.log("No themeNum in request body");
-        return res.status(400).json({ message: "No themeNum in request body" });
-    } else if(!req.body.roomName) { // 변경가능
-        console.log("No roomName in request body");
-        return res.status(400).json({ message: "No roomName in request body" });
-    } else if(!req.body.headCount) { // 변경가능
-        console.log("No headCount in request body");
-        return res.status(400).json({ message: "No headCount in request body" });
-    } else if(!req.body.pw_YN) { // 변경가능
-        console.log("No password in request body");
-        return res.status(400).json({ message: "No password in request body" });
-    } 
+  if (!req.body.themeNum) {
+    // 변경가능
+    console.log("No themeNum in request body");
+    return res.status(400).json({ message: "No themeNum in request body" });
+  } else if (!req.body.roomName) {
+    // 변경가능
+    console.log("No roomName in request body");
+    return res.status(400).json({ message: "No roomName in request body" });
+  } else if (!req.body.headCount) {
+    // 변경가능
+    console.log("No headCount in request body");
+    return res.status(400).json({ message: "No headCount in request body" });
+  } else if (!req.body.pw_YN) {
+    // 변경가능
+    console.log("No password in request body");
+    return res.status(400).json({ message: "No password in request body" });
+  }
 
-  const room = new Room(req.body)
+  const room = new Room(req.body);
 
-  Count.findOne({name:'roomCount'}, (err, count) => {
+  client.create("custom", { name: "hello", password: "N" });
 
-    if(!count){
+  Count.findOne({ name: "roomCount" }, (err, count) => {
+    if (!count) {
       return res.status(400).json({
         success: false,
-        message: "roomCount가 없음"
-      })
+        message: "roomCount가 없음",
+      });
     }
 
     room.id = count.totalCount;
     room.reg_date = CurrentTime.getCurrentDate();
 
     room.save((err, roomInfo) => {
-      if(err) {
-        return res.status(400).json({roomCreateSuccess:false, err})
+      if (err) {
+        return res.status(400).json({ roomCreateSuccess: false, err });
       }
 
-      Count.findOneAndUpdate({name:"roomCount"}, {$inc:{totalCount: 1}}, (err, roomInfo) => {
-        if(err) {
-          return res.status(400).json({countUpdateSuccess:false, err})
+      Count.findOneAndUpdate(
+        { name: "roomCount" },
+        { $inc: { totalCount: 1 } },
+        (err, roomInfo) => {
+          if (err) {
+            return res.status(400).json({ countUpdateSuccess: false, err });
+          }
+
+          return res.status(200).json({ success: true });
         }
-
-        return res.status(200).json({success: true})
-      })
-    })
-  })
-
-})
+      );
+    });
+  });
+});
 
 // 모든 방 조회
-router.get('/getRooms', (req, res) => {
-
-    Room.find({}, (error, list) => {
-        res.status(200).send({ rooms: list });
-    });
-
-})
+router.get("/getRooms", (req, res) => {
+  Room.find({}, (error, list) => {
+    res.status(200).send({ rooms: list });
+  });
+});
 
 // 특정 방 조회
-router.get('/getRoom/:id', (req, res) => {
+router.get("/getRoom/:id", (req, res) => {
+  Room.findOne({ id: req.params.id }, (err, room) => {
+    if (!room) {
+      return res.json({
+        roomFindSuccess: false,
+        message: "해당 Room이 존재하지 않습니다.",
+      });
+    }
 
-    Room.findOne({id:req.params.id}, (err, room) => {
-        if(!room){
-          return res.json({
-            roomFindSuccess: false,
-            message: "해당 Room이 존재하지 않습니다."
-          })
-        }
-
-        res.status(200).send(room);
-    })
-})
+    res.status(200).send(room);
+  });
+});
 
 // 방 입장 -> 비밀번호 유무 상관없이 가능
-router.get('/enterRoom/:id', (req, res) => {
-
-    // 방 찾기
+router.get("/enterRoom/:id", (req, res) => {
+  res.render("main.pug");
+  // 방 찾기
+  /*
     Room.findOne({id:req.params.id}, (err, room) => {
+
+
+      
       if(!room){
         return res.json({
           enterRoomSuccess: false,
@@ -101,6 +114,7 @@ router.get('/enterRoom/:id', (req, res) => {
       res.json({enterRoomSuccess: true})
 
     })
-  })
+    */
+});
 
 module.exports = router;
