@@ -12,7 +12,7 @@ console.log(window.location.pathname);
 
 var client = new Colyseus.Client("ws://localhost:3000");
 let room = client
-  .joinOrCreate(window.location.pathname)
+  .join(window.location.pathname)
   .then((room) => {
     console.log("room created !!!!!");
     return room;

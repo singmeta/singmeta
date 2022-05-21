@@ -1,0 +1,66 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        title Document
+        link(rel="stylesheet",href="https://unpkg.com/mvp.css")
+          style
+            include main.css
+    body 
+        header 
+            h1 Joom 
+        main
+        div#welcome
+            form
+                input#roomname(placeholder="room name", required, type="text")
+                input#nickname(placeholder="nickname", required, type="text")
+                button Enter Room 
+        div#room
+            h3
+            ul
+            form#name
+                input(placeholder="nickname", required, type="text")
+                button Send 
+            form#msg
+                input(placeholder="message", required, type="text")
+                button Send 
+
+        script(src="/socket.io/socket.io.js")
+        script(src="/public/js/app.js")
+     
+        script 
+        function makeConnection() {
+  myPeerConnection = new RTCPeerConnection({
+    iceServers: [
+      {
+        urls: [
+          "stun:stun.l.google.com:19302",
+          "stun:stun1.l.google.com:19302",
+          "stun:stun2.l.google.com:19302",
+          "stun:stun3.l.google.com:19302",
+          "stun:stun4.l.google.com:19302",
+        ],
+      },
+    ],
+  });
+  myPeerConnection.addEventListener("icecandidate", handleIce);
+  myPeerConnection.addEventListener("addstream", handleAddStream);
+  myStream
+    .getTracks()
+    .forEach((track) => myPeerConnection.addTrack(track, myStream));
+}
+
+function handleIce(data) {
+  console.log("sent candidate");
+  socket.emit("ice", data.candidate, roomName);
+}
+
+function handleAddStream(data) {
+  const peerFace = document.getElementById("peerFace");
+  peerFace.srcObject = data.stream;
+}
+
+
+
