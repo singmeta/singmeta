@@ -1,119 +1,72 @@
-/*
-import http from "http";
-//import WebSocket from "ws";
-import express from "express";
-import { Socket } from "dgram";
-import { Server } from "socket.io";
-import path from "path";
-
-const __dirname = path.resolve();
-*/
-
-//const http = require("http");
-
+const http = require("http");
 const express = require("express");
+const cors = require("cors");
+const colyseus = require("colyseus");
+const monitor = require("@colyseus/monitor").monitor;
+// const socialRoutes = require("@colyseus/social/express").default;
 
+const PokeWorld = require("./rooms/PokeWorld").PokeWorld;
+
+const port = process.env.PORT || 3000;
 const app = express();
 
-app.set("view engine", "pug");
-//app.set("view engine", "ejs");
+app.use(cors());
+app.use(express.json());
 
-app.set("views", __dirname + "/src/views");
-
-console.log(__dirname + "/src/views");
-
-app.use("/public", express.static(__dirname + "/src/public"));
-
-app.get("/", (req, res) => res.render("main.pug"));
-//app.get("/*", (req, res) => res.redirect("/"));
-
-app.get("/helloworld", (req, res) => {
-  console.log("helloworld selected");
-  res.render("main.pug");
+const server = http.createServer(app);
+const gameServer = new colyseus.Server({
+  server: server,
 });
 
-app.get("/helloserver", (req, res) => {
-  console.log("helloserver selected");
-  res.render("main.pug");
+var check = 0;
+
+app.get("/apicheck", (req, res) => {
+  console.log("helloworld");
+  var check = 999;
+  console.log(check);
 });
 
-const handleListen = () => console.log("listening on http:localhost:3002!");
-//app.listen(3000, handleListen);
+var roomname;
 
-/*
-const httpServer = http.createServer(app);
-const wsServer = new Server(httpServer);
-*/
-const httpServer = require("http").createServer(app);
-const wsServer = require("socket.io")(httpServer, {
-  // ...
+app.post("/apicheck2", (req, res) => {
+  roomname = req.body;
+  res.send({
+    roomname,
+  });
+  console.log("apichcke2 is success! " + JSON.stringify(roomname));
+  console.log("apichcke2 is success! " + JSON.stringify(roomname.roomname));
 });
 
 /*
-
-function publicRooms() {
-  ß;
-  const {
-    sockets: {
-      adapter: { sids, rooms },
-    },
-  } = wsServer;
-
-  const publicRooms = [];
-  rooms.forEach((_, key) => {
-    if (sids.get(key) === undefined) {
-      publicRooms.push(key);
-    }
-  });
-  return publicRooms;
-}
+  gameServer
+    .define(roomname.roomname, PokeWorld)
+    .on("create", (room) => console.log("room created:", room.roomId))
+    .on("dispose", (room) => console.log("room disposed:", room.roomId))
+    .on("join", (room, client) => console.log(client.id, "joined", room.roomId))
+    .on("leave", (room, client) => console.log(client.id, "left", room.roomId));
 */
-var users = [];
-wsServer.on("connection", (socket) => {
-  socket["nickname"] = "anon";
-  //console.log(socket);
-  socket.onAny((event) => {
-    console.log(`Socket Event:${event}`);
-  });
-  socket.on("enter_room", async (roomName, done) => {
-    await socket.join(roomName);
-    await done();
-    await socket.to(roomName).emit("welcome", socket["nickname"]);
-    users.push(socket["nickname"]);
-    console.log(users);
-    socket.to(roomName).emit("users", users);
-  });
-  socket.on("disconnecting", () => {
-    users.pop();
-    console.log(users);
-    socket.rooms.forEach((room) => {
-      socket.to(room).emit("bye", socket.nickname);
-      socket.to(room).emit("users", users);
-    });
-  });
-  socket.on("new_message", (msg, room, done) => {
-    socket.to(room).emit("new_message", `${socket.nickname}: ${msg}`);
-    done();
-  });
-  socket.on("nickname", (nickname) => {
-    socket["nickname"] = nickname;
-  });
+// register your room handlers
 
-  //--------------------------------------------------
-  socket.on("offer", (offer, roomName) => {
-    socket.to(roomName).emit("offer", offer);
-  });
-  socket.on("answer", (answer, roomName) => {
-    socket.to(roomName).emit("answer", answer);
-  });
-  socket.on("ice", (ice, roomName) => {
-    socket.to(roomName).emit("ice", ice);
-  });
-});
+// register your room handlers
+gameServer
+  .define("custom", PokeWorld)
+  .on("create", (room) => console.log("room created:", room.roomId))
+  .on("dispose", (room) => console.log("room disposed:", room.roomId))
+  .on("join", (room, client) => console.log(client.id, "joined", room.roomId))
+  .on("leave", (room, client) => console.log(client.id, "left", room.roomId));
 
-httpServer.listen(3002, handleListen);
-/*
-app.listen(3002, () => {
-  console.log(`Example app listening on port ${3002}`);
-});
-*/
+// ToDo: Create a 'chat' room for realtime chatting
+
+/**
+ * Register @colyseus/social routes
+ *
+ * - uncomment if you want to use default authentication (https://docs.colyseus.io/authentication/)
+ * - also uncomment the require statement
+ */
+// app.use("/", socialRoutes);
+
+// register colyseus monitor AFTER registering your room handlers
+app.use("/colyseus", monitor(gameServer));
+
+gameServer.listen(port);
+console.log(`Listening on ws://localhost:${port}`);
