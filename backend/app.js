@@ -10,6 +10,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/user");
 const audioRouter = require("./routes/audio");
 const roomRouter = require("./routes/room");
+const { mongoURI } = require("./config/prod");
 
 // view engine setup
 //app.set("views", path.join(__dirname, "views"));
@@ -110,7 +111,7 @@ wsServer.on("connection", (socket) => {
 
 const handleListen = () => console.log(`listening on http:localhost:${port}`);
 
-httpServer.listen(port, handleListen);
+httpServer.listen(port, "0.0.0.0", handleListen);
 
 /*
 app.listen(port, () => {
