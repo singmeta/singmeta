@@ -14,7 +14,10 @@ mongoose
   .catch((err) => console.log(err));
 
 // 방 만들기
-router.post("/createRoom", (req, res) => {
+router.get("/createRoom", (req, res) => {
+  res.render("main.pug");
+
+  /*
   var client = new Colyseus.Client("ws://localhost:3000");
 
   if (!req.body.themeNum) {
@@ -68,6 +71,7 @@ router.post("/createRoom", (req, res) => {
       );
     });
   });
+  */
 });
 
 // 모든 방 조회
