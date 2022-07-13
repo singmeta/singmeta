@@ -76,9 +76,15 @@ router.get("/createRoom", (req, res) => {
 
 // 모든 방 조회
 router.get("/getRooms", (req, res) => {
+
+
+  res.send("TilesTown");
+
+  /*
   Room.find({}, (error, list) => {
     res.status(200).send({ rooms: list });
   });
+  */
 });
 
 // 특정 방 조회
