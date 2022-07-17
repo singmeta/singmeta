@@ -78,7 +78,7 @@ router.get("/createRoom", (req, res) => {
 router.get("/getRooms", (req, res) => {
 
 
-  res.send("town");
+  res.send("map2");
 
   /*
   Room.find({}, (error, list) => {
