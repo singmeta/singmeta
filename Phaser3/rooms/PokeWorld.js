@@ -22,9 +22,9 @@ exports.PokeWorld = class extends colyseus.Room {
     players[player.sessionId] = {
       roomId: this.roomId,
       sessionId: player.sessionId,
-      map: "town",
-      x: 352,
-      y: 1216,
+      map: "map2",
+      x: 566,
+      y: 214,
     };
 
     console.log(players);
