@@ -49,7 +49,7 @@ app.post("/apicheck2", (req, res) => {
 
 // register your room handlers
 gameServer
-  .define("custom", PokeWorld)
+  .define("custom", PokeWorld,{charname:""})
   .on("create", (room) => console.log("room created:", room.roomId))
   .on("dispose", (room) => console.log("room disposed:", room.roomId))
   .on("join", (room, client) => console.log(client.id, "joined", room.roomId))

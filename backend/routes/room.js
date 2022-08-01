@@ -102,7 +102,7 @@ router.get("/getRoom/:id", (req, res) => {
 });
 
 // 방 입장 -> 비밀번호 유무 상관없이 가능
-router.get("/enterRoom/:mapid/:id", (req, res) => {
+router.get("/enterRoom/:mapid/:charname/:id", (req, res) => {
   res.render("main.pug");
   // 방 찾기
   /*

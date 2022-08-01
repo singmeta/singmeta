@@ -8,18 +8,29 @@ const roomdata = {
   password: {
     type: String,
   },
+  charname:{
+    type:String,
+  }
+
 };
 const players = {};
 exports.PokeWorld = class extends colyseus.Room {
   onCreate(options = roomdata) {
     console.log("ON CREATE");
+    console.log(roomdata.charname)
   }
 
-  onJoin(player, options = roomdata) {
+  onJoin(player, options) {
     console.log("ON JOIN");
-    console.log(this.roomId);
+    //console.log(this.roomId);
+    //console.log(roomdata);
+    //console.log(player);
+    console.log(options.charname);
+
+
 
     players[player.sessionId] = {
+      charname:options.charname,
       roomId: this.roomId,
       sessionId: player.sessionId,
       map: "map2",
@@ -62,6 +73,7 @@ exports.PokeWorld = class extends colyseus.Room {
           event: "PLAYER_MOVEMENT_ENDED",
           sessionId: player.sessionId,
           map: players[player.sessionId].map,
+          ...players[player.sessionId],
           position: data.position,
         },
         { except: player }
