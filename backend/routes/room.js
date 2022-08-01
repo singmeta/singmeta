@@ -14,7 +14,7 @@ mongoose
   .catch((err) => console.log(err));
 
 // 방 만들기
-router.get("/createRoom/:mapid", (req, res) => {
+router.get("/createRoom/:mapid/:charname", (req, res) => {
   res.render("main.pug");
 
   /*
