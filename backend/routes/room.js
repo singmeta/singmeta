@@ -7,6 +7,8 @@ var CurrentTime = require("../functions/function");
 
 const Colyseus = require("colyseus.js");
 
+var client = new Colyseus.Client("ws://localhost:3000");
+
 const mongoose = require("mongoose");
 mongoose
   .connect(config.mongoURI, {})
@@ -14,7 +16,8 @@ mongoose
   .catch((err) => console.log(err));
 
 // 방 만들기
-router.get("/createRoom/:mapid/:charname", (req, res) => {
+router.get("/createRoom/:mapid/:charname/:nickname/:roomid", (req, res) => {
+
   res.render("main.pug");
 
   /*
@@ -102,7 +105,12 @@ router.get("/getRoom/:id", (req, res) => {
 });
 
 // 방 입장 -> 비밀번호 유무 상관없이 가능
-router.get("/enterRoom/:mapid/:charname/:id", (req, res) => {
+router.get("/enterRoom/:mapid/:charname/:id/:nickname/:roomid", (req, res) => {
+
+
+
+
+
   res.render("main.pug");
   // 방 찾기
   /*

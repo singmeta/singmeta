@@ -1,3 +1,6 @@
+
+
+
 const socket = io();
 
 console.log(socket);
@@ -11,7 +14,20 @@ const scroll2 = document.getElementById("scroll2");
 
 scroll2.style.display = "block";
 
+var arr = window.location.pathname.split("/");
+
 let roomName;
+
+if(arr[2]==="enterRoom"){
+  roomName = window.location.pathname.split("/")[7];
+  console.log(roomName);
+}else if(arr[2]==="createRoom"){
+  roomName = window.location.pathname.split("/")[6];
+  console.log(roomName);
+}
+
+
+
 
 function addusers(users) {
   console.log(users);
@@ -20,17 +36,17 @@ function addusers(users) {
   scrollp.innerHTML = users;
   scroll2.appendChild(scrollp);
 }
-
 function visitorscreen() {
   scroll.style.display = "none";
   scroll2.style.display = "block";
+
+  console.log(roomName);
 }
 
 function chatscreen() {
   scroll.style.display = "block";
   scroll2.style.display = "none";
 }
-
 function addMessage1(message) {
   //const ul = room.querySelector("ul");
 
@@ -68,12 +84,17 @@ room.hidden = true;
 function handleMessageSubmit(event) {
   event.preventDefault();
   const input = room.querySelector("#msg input");
-
   const intputvalue = input.value;
 
   socket.emit("new_message", input.value, roomName, () => {
     addMessage1(`You: ${intputvalue}`);
   });
+  console.log("front");
+  console.log(roomName);
+  console.log(input.value);
+  
+  
+
   input.value = "";
 }
 function handleNicknameSubmit(event) {
@@ -83,12 +104,15 @@ function handleNicknameSubmit(event) {
   socket.emit("nickname", input.value);
 }
 
+
 function showRoom(msg) {
   welcome.hidden = true;
   room.hidden = false;
   console.log("entered room");
   const msgForm = room.querySelector("#msg");
   const nameForm = room.querySelector("#name");
+
+  
   msgForm.addEventListener("submit", handleMessageSubmit);
   nameForm.addEventListener("submit", handleNicknameSubmit);
   handleWelcomeSubmit();
@@ -106,6 +130,9 @@ function handleRoomSubmit(event) {
   //h3.innerText = `Room ${roomName}`;
 }
 
+
+
+
 form.addEventListener("submit", handleRoomSubmit);
 
 socket.on("welcome", (user) => {
@@ -121,6 +148,14 @@ socket.on("new_message", addMessage2);
 socket.on("users", (users) => {
   addusers(users);
 });
+
+socket.on("roomidsend",(roomid)=>{
+  console.log("client side roomidsend")
+  console.log(roomid)
+  roomName=roomid;
+})
+
+
 
 const myFace = document.getElementById("myFace");
 const muteBtn = document.getElementById("mute");
@@ -168,7 +203,7 @@ function handleMuteClick() {
 muteBtn.addEventListener("click", handleMuteClick);
 
 async function initCall() {
-  call.hidden = false;
+  call.hidden = true;
   await getMedia();
   makeConnection();
 }
@@ -244,3 +279,10 @@ function handleAddStream(data) {
   const peerFace = document.getElementById("peerFace");
   peerFace.srcObject = data.stream;
 }
+
+
+
+
+
+
+

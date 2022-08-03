@@ -10,6 +10,7 @@ const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/user");
 const audioRouter = require("./routes/audio");
 const roomRouter = require("./routes/room");
+var url = require('url');
 
 // view engine setup
 //app.set("views", path.join(__dirname, "views"));
@@ -66,13 +67,21 @@ const wsServer = require("socket.io")(httpServer, {
 });
 
 var users = [];
+
+
+
 wsServer.on("connection", (socket) => {
-  socket["nickname"] = "anon";
+
+
   //console.log(socket);
   socket.onAny((event) => {
     console.log(`Socket Event:${event}`);
   });
+
+
   socket.on("enter_room", async (roomName, done) => {
+    console.log("rom is entering")
+    console.log(roomName)
     await socket.join(roomName);
     await done();
     await socket.to(roomName).emit("welcome", socket["nickname"]);
@@ -80,6 +89,8 @@ wsServer.on("connection", (socket) => {
     console.log(users);
     socket.to(roomName).emit("users", users);
   });
+
+
   socket.on("disconnecting", () => {
     users.pop();
     console.log(users);
@@ -90,9 +101,16 @@ wsServer.on("connection", (socket) => {
   });
   socket.on("new_message", (msg, room, done) => {
     socket.to(room).emit("new_message", `${socket.nickname}: ${msg}`);
+    console.log("backend")
+    console.log(msg); 
+    console.log(room);
+    console.log(socket.nickname)
+    
     done();
   });
   socket.on("nickname", (nickname) => {
+    console.log("nicknamesocket")
+    console.log(nickname)
     socket["nickname"] = nickname;
   });
 

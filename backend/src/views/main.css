@@ -7,7 +7,7 @@
 }
 
 .first_bar {
-  width: 30px;
+  width: 50px;
   height: 360px;
   background-color: #21253e;
   flex-direction: column;
@@ -43,4 +43,15 @@
 
 .scroll {
   display: block;
+}
+
+.icon{
+  color: fa-inverse;
+  margin-top: 50%; 
+  margin-left: 30%;
+  width:20px;
+  height:20px;
+  margin-bottom: 20%;
+  
+
 }
