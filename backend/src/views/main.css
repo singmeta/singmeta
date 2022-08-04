@@ -25,12 +25,14 @@
   position: relative;
   padding: 10px;
   background-color: #a8ddfd;
-  width: 65px;
-  height: 10px;
+  width: 50px;
+  height: auto;
   text-align: left;
   font-size: 10px;
   border: 1px solid #97c6e3;
   border-radius: 10px;
+  word-wrap: break-word;
+
 }
 .bolo {
   font-size: 11px;
