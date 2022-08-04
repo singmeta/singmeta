@@ -83,7 +83,7 @@ room.hidden = true;
 
 function handleMessageSubmit(event) {
   event.preventDefault();
-  const input = room.querySelector("#msg input");
+  const input = room.querySelector("#msg textarea");
   const intputvalue = input.value;
 
   socket.emit("new_message", input.value, roomName, () => {
