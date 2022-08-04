@@ -7,7 +7,7 @@
 }
 
 .first_bar {
-  width: 30px;
+  width: 50px;
   height: 360px;
   background-color: #21253e;
   flex-direction: column;
@@ -25,22 +25,76 @@
   position: relative;
   padding: 10px;
   background-color: #a8ddfd;
-  width: 65px;
-  height: 10px;
+  width: 50px;
+  height: auto;
   text-align: left;
-  font-size: 10px;
+  font-size: 6px;
   border: 1px solid #97c6e3;
   border-radius: 10px;
+  word-wrap: break-word;
+
+
 }
 .bolo {
   font-size: 11px;
 }
 .display {
-  height: 300px;
+  height:300px;
 
+  border-radius: 16px;
+}
+.display2 {
+  height: 300px;
   border-radius: 16px;
 }
 
 .scroll {
-  display: block;
+  overflow:scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
+}
+.scroll::-webkit-scrollbar {
+  overflow:scroll;
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+
+
+
+.icon{
+  color: fa-inverse;
+  margin-top: 50%; 
+  margin-left: 30%;
+  width:20px;
+  height:20px;
+  margin-bottom: 20%;
+}
+.messageinput{
+  width:100%;
+  height:15px;
+  font-size:10px;
+  text-align:center;
+
+}
+.messagebutton{
+  width:100%;
+  height:20px;
+  font-size:7px;
+  background-color:#97c6e3;
+}
+
+.messagebuttondiv{
+  width:100%;
+  display:flex; 
+  flex-direction: column;
+
+
+
+}
+.mutetext{
+  color: aquamarine;
+  margin-left: 12px;
+  font-size: 7px;
+
 }

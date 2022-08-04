@@ -1,3 +1,5 @@
+
+
 doctype html
 html(lang="en")
     head
@@ -8,46 +10,53 @@ html(lang="en")
 
 
 
-        title 1234
+        title singmeta
     body 
 
     div(class="main_container")
       div(class="first_bar")
-        i#mute(style="color: white; margin-top: 70%; margin-left: 30%"
-          class="fa-solid fa-microphone" onclick="mic()")           
-        i(style="color: white; margin-top: 70%; margin-left: 25%"
-          class="fa-solid fa-comment-dots" onclick="chatscreen()")
-        i(style="color: white; margin-top: 70%; margin-left: 25%"
-          class="fa-solid fa-user" onclick="visitorscreen()")
-        i(style="color: white;margin-top: 70%;margin-left: 25%;margin-bottom: 30%;"
-        class="fa-solid fa-arrow-right-from-bracket" onclick="outfunction()")
+        img#musicbutton(class="icon" src='/public/images/music.png')
+        text#musictext(class="mutetext") 정지중
+        img#mute(class="icon" src='/public/images/mic.png')
+        text#mutetext(class="mutetext") 작동중
+        img(class="icon" src='/public/images/bubble-chat.png' onclick="chatscreen()")
+        img(class="icon" src='/public/images/people.png' onclick="visitorscreen()")
+        img(class="icon" src='/public/images/exit.png' onclick="outfunction()")
+
       div(class="second_bar")
-        div#scroll
-          div(class="display" id="msg-field")
-        div#scroll2
-          div(class="display2" id="msg-field")
+        div#scroll(class="scroll")
+          div(class="display scroll" id="msg-field")
+        div#scroll2(class="scroll")
+          div(class="display2 scroll" id="msg-field")
           div
             div#welcome
              form
                  input#roomname(placeholder="room name", required, type="text")
-                 button Enter Room 
+                 button#enterbutton Enter Room
+                  
+        div#room
+          h3
+          ul
+          form#msg(class="messagebuttondiv")
+              textarea(class="messageinput",placeholder ="텍스트 입력",name="messageinput2", cols="30", rows="10") 
+              button(class="messagebutton") 전송
+
+ 
+
+          
                  
       div
         div(id="index" style="width:610px; height:360px;")
-        div#room
-            h3
-            ul
-            form#name
-                input(placeholder="nickname", required, type="text")
-                button Send 
-            form#msg
-                input(placeholder="message", required, type="text")
-                button Send 
 
-            div#call
-                div#myStream
-                    video#myFace(autoplay,playsinline, width="400", height="400")
-                    video#peerFace(autoplay,playsinline, width="400", height="400")
+
+        
+
+
+
+    div#call
+      div#myStream
+        video#myFace(autoplay,playsinline, width="400", height="400")
+        video#peerFace(autoplay,playsinline, width="400", height="400")
 
         
 
