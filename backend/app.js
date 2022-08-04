@@ -71,7 +71,7 @@ var users = [];
 
 
 wsServer.on("connection", (socket) => {
-
+  socket["nickname"]="anon";
 
   //console.log(socket);
   socket.onAny((event) => {
@@ -82,13 +82,18 @@ wsServer.on("connection", (socket) => {
   socket.on("enter_room", async (roomName, done) => {
     console.log("rom is entering")
     console.log(roomName)
+    socket.roomName = roomName;
     await socket.join(roomName);
     await done();
     await socket.to(roomName).emit("welcome", socket["nickname"]);
     users.push(socket["nickname"]);
     console.log(users);
     socket.to(roomName).emit("users", users);
+
+    console.log(socket.roomName)
   });
+
+
 
 
   socket.on("disconnecting", () => {
@@ -105,9 +110,9 @@ wsServer.on("connection", (socket) => {
     console.log(msg); 
     console.log(room);
     console.log(socket.nickname)
-    
     done();
   });
+
   socket.on("nickname", (nickname) => {
     console.log("nicknamesocket")
     console.log(nickname)

@@ -15,33 +15,35 @@ html(lang="en")
 
     div(class="main_container")
       div(class="first_bar")
-        img#mute(class="icon" src='/public/images/mic.png' onclick="mic()")
-        img#mute(class="icon" src='/public/images/mic2.png' onclick="mic()")
-        img#mute(class="icon" src='/public/images/bubble-chat.png' onclick="chatscreen()")
-        img#mute(class="icon" src='/public/images/people.png' onclick="visitorscreen()")
-        img#mute(class="icon" src='/public/images/exit.png' onclick="outfunction()")
+        img#musicbutton(class="icon" src='/public/images/music.png')
+        text#musictext(class="mutetext") 정지중
+        img#mute(class="icon" src='/public/images/mic.png')
+        text#mutetext(class="mutetext") 작동중
+        img(class="icon" src='/public/images/bubble-chat.png' onclick="chatscreen()")
+        img(class="icon" src='/public/images/people.png' onclick="visitorscreen()")
+        img(class="icon" src='/public/images/exit.png' onclick="outfunction()")
 
       div(class="second_bar")
-        div#scroll
-          div(class="display" id="msg-field")
-        div#scroll2
-          div(class="display2" id="msg-field")
+        div#scroll(class="scroll")
+          div(class="display scroll" id="msg-field")
+        div#scroll2(class="scroll")
+          div(class="display2 scroll" id="msg-field")
           div
             div#welcome
              form
                  input#roomname(placeholder="room name", required, type="text")
-                 button Enter Room 
+                 button#enterbutton Enter Room
+                  
         div#room
           h3
           ul
-          form#msg
-              input(placeholder="message", required, type="text")
-              button Send 
-          form#name
-              input(placeholder="nickname", required, type="text")
-              button Send 
-          
+          form#msg(class="messagebuttondiv")
+              input(class="messageinput",placeholder="텍스트 입력", required, type="text")
+              button(class="messagebutton") 전송
 
+ 
+
+          
                  
       div
         div(id="index" style="width:610px; height:360px;")

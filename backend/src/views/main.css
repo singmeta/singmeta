@@ -36,14 +36,28 @@
   font-size: 11px;
 }
 .display {
-  height: 300px;
+  height:300px;
 
+  border-radius: 16px;
+}
+.display2 {
+  height: 300px;
   border-radius: 16px;
 }
 
 .scroll {
-  display: block;
+  overflow:scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+
 }
+.scroll::-webkit-scrollbar {
+  overflow:scroll;
+  display: none; /* Chrome, Safari, Opera*/
+}
+
+
+
 
 .icon{
   color: fa-inverse;
@@ -52,6 +66,32 @@
   width:20px;
   height:20px;
   margin-bottom: 20%;
-  
+}
+.messageinput{
+  width:100%;
+  height:15px;
+  font-size:10px;
+  text-align:center;
+
+}
+.messagebutton{
+  width:100%;
+  height:20px;
+  font-size:7px;
+  background-color:#97c6e3;
+}
+
+.messagebuttondiv{
+  width:100%;
+  display:flex; 
+  flex-direction: column;
+
+
+
+}
+.mutetext{
+  color: aquamarine;
+  margin-left: 12px;
+  font-size: 7px;
 
 }
