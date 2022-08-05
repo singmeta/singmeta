@@ -16,7 +16,7 @@ html(lang="en")
     div(class="main_container")
       div(class="first_bar")
         img#musicbutton(class="icon" src='/public/images/music.png')
-        text#musictext(class="mutetext") 정지중
+        text#musictext(class="mutetext") 중단중
         img#mute(class="icon" src='/public/images/mic.png')
         text#mutetext(class="mutetext") 작동중
         img(class="icon" src='/public/images/bubble-chat.png' onclick="chatscreen()")
@@ -58,8 +58,12 @@ html(lang="en")
         video#myFace(autoplay,playsinline, width="400", height="400")
         video#peerFace(autoplay,playsinline, width="400", height="400")
 
-        
 
+
+
+
+    
+        script(src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js")
         script(src="/socket.io/socket.io.js")
         script(src="/public/app.js")
         script(src="/public/bundle.js")
