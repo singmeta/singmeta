@@ -220,9 +220,19 @@ var musicstart = false;
 
 function handleMusicClick() {
   if(musicstart == false){
-    musicstart = true;
+
+    if(muted==false){
+      musicstart = true;
+      startRecording();
+    }else{
+      console.log("음소거상태");
+      alert("음소거 상태입니다! 마이크를 켜주세요")
+    }
+    
+
   }else{
     musicstart = false;
+    stopRecording();
   }
   var musictext = document.getElementById("musictext");
   if (musicstart) {
@@ -318,3 +328,106 @@ function handleAddStream(data) {
 
 
 
+/* ----------------*/
+
+//webkitURL is deprecated but nevertheless
+URL = window.URL || window.webkitURL;
+
+var gumStream;              //stream from getUserMedia()
+var rec;                    //Recorder.js object
+var input;                  //MediaStreamAudioSourceNode we'll be recording
+
+// shim for AudioContext when it's not avb.
+var AudioContext = window.AudioContext || window.webkitAudioContext;
+var audioContext //new audio context to help us record
+
+
+//add events to those 2 buttons
+
+function startRecording() {
+    console.log("recordButton clicked");
+
+    // Disable the record button until we get a success or fail from getUserMedia()
+
+    navigator.mediaDevices.getUserMedia({audio: true, video: false}).then(function(stream) {
+        console.log("getUserMedia() success, stream created, initializing Recorder.js ...");
+
+        audioContext = new AudioContext({sampleRate: 16000});
+
+        // assign to gumStream for later use
+        gumStream = stream;
+
+        // use the stream
+        input = audioContext.createMediaStreamSource(stream);
+
+        // Create the Recorder object and configure to record mono sound (1 channel) Recording 2 channels will double the file size
+        rec = new Recorder(input, {numChannels: 1})
+
+        //start the recording process
+        rec.record()
+
+        console.log("Recording started");
+
+    }).catch(function(err) {
+        //enable the record button if getUserMedia() fails
+        recordButton.disabled = false;
+        stopButton.disabled = true;
+    });
+}
+function stopRecording() {
+    console.log("stopButton clicked");
+
+    //disable the stop button, enable the record too allow for new recordings
+ 
+
+    //tell the recorder to stop the recording
+    rec.stop(); //stop microphone access
+    gumStream.getAudioTracks()[0].stop();
+
+    //create the wav blob and pass it on to createDownloadLink
+    rec.exportWAV(createDownloadLink);
+}
+
+function createDownloadLink(blob) {
+    var url = URL.createObjectURL(blob);
+    var au = document.createElement('audio');
+    var li = document.createElement('li');
+    var link = document.createElement('a');
+
+    console.log(blob);
+
+    console.log(url);
+
+    //name of .wav file to use during upload and download (without extension)
+    var filename = new Date().toISOString();
+
+    //add controls to the <audio> element
+    au.controls = true;
+    au.src = url;
+
+    //save to disk link
+    link.href = url;
+    link.download = filename+".wav"; //download forces the browser to download the file using the  filename
+    link.innerHTML = "Save to disk";
+
+    console.log(filename+".wav");
+
+
+    var formdata = new FormData();
+formdata.append("title", "1");
+formdata.append("singer", "1");
+formdata.append("track", blob, "a98796cc-5c17-4e14-99ad-ec953cb14633.wav");
+
+var requestOptions = {
+  method: 'POST',
+  body: formdata,
+  redirect: 'follow'
+};
+
+fetch("http://localhost:5002/audio", requestOptions)
+  .then(response => response.text())
+  .then(result => console.log(result))
+  .catch(error => console.log('error', error));
+
+ 
+}

@@ -63,7 +63,7 @@
   */
   router.post('/', (req, res) => {
      const storage = multer.memoryStorage()
-     const upload = multer({ storage: storage, limits: { fields: 4, fileSize: 6000000, files: 1, parts: 4 }});
+     const upload = multer({ storage: storage, limits: { fields: 4, fileSize: 60000000, files: 1, parts: 4 }});
      upload.single('track')(req, res, (err) => {
          if (err) {
              console.log(err);
@@ -76,7 +76,7 @@
  
          const readStream = Readable.from(req.file.buffer);
          console.log(req.file);
-         const options = ({ metadata:`${req.body.title}/${req.body.singer}`, filename:req.file.originalname, contenttype: 'audio/mp3'});
+         const options = ({ metadata:`${req.body.title}/${req.body.singer}`, filename:req.file.originalname, contenttype: 'audio/wav'});
          Attachment.write(options, readStream, (err, file) => {
              if (err)
                  return res.status(400).json({message: "Bad Request"});
