@@ -13,6 +13,7 @@ const roomdata = {
   }
 
 };
+//test
 const players = {};
 exports.PokeWorld = class extends colyseus.Room {
   onCreate(options = roomdata) {
