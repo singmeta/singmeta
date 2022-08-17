@@ -71,7 +71,6 @@ var users = [];
 
 
 wsServer.on("connection", (socket) => {
-  socket["nickname"]="anon";
 
   //console.log(socket);
   socket.onAny((event) => {
@@ -79,43 +78,45 @@ wsServer.on("connection", (socket) => {
   });
 
 
+  console.log( socket.client.conn.server.clientsCount + " users connected" );
+
+
+
   socket.on("enter_room", async (roomName, done) => {
-    console.log("rom is entering")
-    console.log(roomName)
+
     socket.roomName = roomName;
     await socket.join(roomName);
     await done();
     await socket.to(roomName).emit("welcome", socket["nickname"]);
-    users.push(socket["nickname"]);
-    console.log(users);
-    socket.to(roomName).emit("users", users);
-
-    console.log(socket.roomName)
+    await users.push(socket["nickname"]);
+    await console.log(users);
+    await socket.to(roomName).emit("users", users);
+    //console.log(socket.roomName)
   });
-
-
-
 
   socket.on("disconnecting", () => {
     users.pop();
+    console.log("user poped!!");
     console.log(users);
     socket.rooms.forEach((room) => {
       socket.to(room).emit("bye", socket.nickname);
       socket.to(room).emit("users", users);
     });
   });
+
+
   socket.on("new_message", (msg, room, done) => {
     socket.to(room).emit("new_message", `${socket.nickname}: ${msg}`);
-    console.log("backend")
-    console.log(msg); 
-    console.log(room);
-    console.log(socket.nickname)
+    //console.log("backend")
+    //console.log(msg); 
+    //console.log(room);
+    //console.log(socket.nickname)
     done();
   });
 
   socket.on("nickname", (nickname) => {
-    console.log("nicknamesocket")
-    console.log(nickname)
+    //console.log("nicknamesocket")
+    //console.log(nickname)
     socket["nickname"] = nickname;
   });
 

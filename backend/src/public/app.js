@@ -28,17 +28,34 @@ scroll2.style.display = "none";
 var arr = window.location.pathname.split("/");
 
 let roomName;
+var userlist;
 
+/*
+
+*/
 function addusers(users) {
   console.log(users);
-  var scrollp = document.createElement("p");
-  scrollp.style.backgroundColor = "red";
-  scrollp.innerHTML = users;
-  scroll2.appendChild(scrollp);
+  userlist = users;
+
 }
 function visitorscreen() {
   scroll.style.display = "none";
   scroll2.style.display = "block";
+  console.log(socket["users"]);
+  
+
+  var userdiv = document.getElementById("msg-field2")
+  userlist.forEach(user=>{
+    var scrollp = document.createElement("p");
+    scrollp.style.backgroundColor = "red";
+    scrollp.innerHTML = user;
+    userdiv.appendChild(scrollp);
+  
+  })
+
+
+
+
 
   console.log(roomName);
 }
@@ -97,19 +114,19 @@ function handleMessageSubmit(event) {
 
   input.value = "";
 }
-function handleNicknameSubmit(event) {
+async function handleNicknameSubmit(event) {
   //event.preventDefault();
   //const input = room.querySelector("#name input");
   var inputvalue;
 
   if(arr[2]==="enterRoom"){
-    inputvalue = window.location.pathname.split("/")[6];
+    inputvalue = await window.location.pathname.split("/")[6];
     console.log(inputvalue);
   }else if(arr[2]==="createRoom"){
-    inputvalue = window.location.pathname.split("/")[5];
+    inputvalue = await window.location.pathname.split("/")[5];
     console.log(inputvalue);
   } 
-  socket.emit("nickname", inputvalue);
+  await socket.emit("nickname", inputvalue);
 
 }
 
@@ -142,8 +159,8 @@ async function handleRoomSubmit(event) {
   //h3.innerText = `Room ${roomName}`;
 }
 window.onload=async function(){
-  await handleRoomSubmit();
   await handleNicknameSubmit();
+  await handleRoomSubmit();
 }
 
 
@@ -171,6 +188,8 @@ socket.on("new_message",(msg)=>{
 
 socket.on("users", (users) => {
   addusers(users);
+  console.log("userlist");
+  console.log(users);
 });
 
 
