@@ -1,0 +1,30 @@
+version: "3"
+services:
+  backend:
+    container_name: singmeta_backend
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "5002:5002"
+    expose:
+      - "5002"
+
+    networks:
+      - febnine-net
+
+  gameserver:
+    container_name: singmeta_gameserver
+    build:
+      context: ./Phaser3
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+    expose:
+      - "3000"
+
+    networks:
+      - febnine-net
+
+networks:
+  febnine-net:
