@@ -1,0 +1,5 @@
+show dbs
+user SINGMETA
+use SINGMETA
+show collections
+show collections

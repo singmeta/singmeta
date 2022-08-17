@@ -9,6 +9,13 @@ services:
       - "5002:5002"
     expose:
       - "5002"
+    environment:
+      NODE_ENV: production
+
+    links:
+      - mongodb
+    depends_on:
+      - mongodb
 
     networks:
       - febnine-net
@@ -26,5 +33,28 @@ services:
     networks:
       - febnine-net
 
+  mongodb:
+    image: mongo
+    container_name: singmetadb
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - ./mongodb:/data/db
+    networks:
+      - "qualiexplore_net"
+      - febnine-net
+
+  mongo-seed:
+    build:
+      context: ./mongo_seed
+      dockerfile: Dockerfile
+    depends_on:
+      - mongodb
+    networks:
+      - "qualiexplore_net"
+      - febnine-net
+
 networks:
   febnine-net:
+  qualiexplore_net:
