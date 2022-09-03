@@ -1,6 +1,3 @@
-
-
-
 const socket = io();
 
 console.log(socket);
@@ -16,13 +13,10 @@ const cameraBtn = document.getElementById("camera");
 const camerasSelect = document.getElementById("cameras");
 const call = document.getElementById("call");
 
-
-
-
 musicBtn.addEventListener("click", handleMusicClick);
 muteBtn.addEventListener("click", handleMuteClick);
 
-scroll.style.display ="block";
+scroll.style.display = "block";
 scroll2.style.display = "none";
 
 var arr = window.location.pathname.split("/");
@@ -36,26 +30,19 @@ var userlist;
 function addusers(users) {
   console.log(users);
   userlist = users;
-
 }
 function visitorscreen() {
   scroll.style.display = "none";
   scroll2.style.display = "block";
   console.log(socket["users"]);
-  
 
-  var userdiv = document.getElementById("msg-field2")
-  userlist.forEach(user=>{
+  var userdiv = document.getElementById("msg-field2");
+  userlist.forEach((user) => {
     var scrollp = document.createElement("p");
     scrollp.style.backgroundColor = "red";
     scrollp.innerHTML = user;
     userdiv.appendChild(scrollp);
-  
-  })
-
-
-
-
+  });
 
   console.log(roomName);
 }
@@ -119,17 +106,15 @@ async function handleNicknameSubmit(event) {
   //const input = room.querySelector("#name input");
   var inputvalue;
 
-  if(arr[2]==="enterRoom"){
+  if (arr[2] === "enterRoom") {
     inputvalue = await window.location.pathname.split("/")[6];
     console.log(inputvalue);
-  }else if(arr[2]==="createRoom"){
+  } else if (arr[2] === "createRoom") {
     inputvalue = await window.location.pathname.split("/")[5];
     console.log(inputvalue);
-  } 
+  }
   await socket.emit("nickname", inputvalue);
-
 }
-
 
 async function showRoom(msg) {
   welcome.hidden = true;
@@ -137,7 +122,6 @@ async function showRoom(msg) {
   console.log("entered room");
   const msgForm = room.querySelector("#msg");
   const nameForm = room.querySelector("#name");
-
 
   msgForm.addEventListener("submit", handleMessageSubmit);
   await handleWelcomeSubmit();
@@ -147,28 +131,25 @@ async function handleRoomSubmit(event) {
   //event.preventDefault();
   const input = form.querySelector("#roomname");
   //const nickname = form.querySelector("#nickname");
-  if(arr[2]==="enterRoom"){
+  if (arr[2] === "enterRoom") {
     roomName = await window.location.pathname.split("/")[7];
     console.log(roomName);
-  }else if(arr[2]==="createRoom"){
+  } else if (arr[2] === "createRoom") {
     roomName = await window.location.pathname.split("/")[6];
     console.log(roomName);
-  }  
+  }
   socket.emit("enter_room", roomName, showRoom);
   input.value = "";
   //h3.innerText = `Room ${roomName}`;
 }
-window.onload=async function(){
+window.onload = async function () {
   await handleNicknameSubmit();
   await handleRoomSubmit();
+};
+
+function tmpConsole() {
+  console.log("test"); // test
 }
-
-
-
-function tmpConsole(){
-  console.log('test');	// test
-}
-
 
 form.addEventListener("submit", handleRoomSubmit);
 
@@ -180,19 +161,17 @@ socket.on("bye", (left) => {
   addMessage2(`${left}님 나감 `);
 });
 
-socket.on("new_message",(msg)=>{
-  console.log("new_message_recived")
+socket.on("new_message", (msg) => {
+  console.log("new_message_recived");
   console.log(msg);
-  addMessage2(msg)}
-  );
+  addMessage2(msg);
+});
 
 socket.on("users", (users) => {
   addusers(users);
   console.log("userlist");
   console.log(users);
 });
-
-
 
 call.hidden = true;
 
@@ -236,20 +215,16 @@ function handleMuteClick() {
 
 var musicstart = false;
 
-
 function handleMusicClick() {
-  if(musicstart == false){
-
-    if(muted==false){
+  if (musicstart == false) {
+    if (muted == false) {
       musicstart = true;
       startRecording();
-    }else{
+    } else {
       console.log("음소거상태");
-      alert("음소거 상태입니다! 마이크를 켜주세요")
+      alert("음소거 상태입니다! 마이크를 켜주세요");
     }
-    
-
-  }else{
+  } else {
     musicstart = false;
     stopRecording();
   }
@@ -260,8 +235,6 @@ function handleMusicClick() {
     musictext.innerText = "중단중";
   }
 }
-
-
 
 async function initCall() {
   call.hidden = true;
@@ -341,112 +314,105 @@ function handleAddStream(data) {
   peerFace.srcObject = data.stream;
 }
 
-
-
-
-
-
-
 /* ----------------*/
 
 //webkitURL is deprecated but nevertheless
 URL = window.URL || window.webkitURL;
 
-var gumStream;              //stream from getUserMedia()
-var rec;                    //Recorder.js object
-var input;                  //MediaStreamAudioSourceNode we'll be recording
+var gumStream; //stream from getUserMedia()
+var rec; //Recorder.js object
+var input; //MediaStreamAudioSourceNode we'll be recording
 
 // shim for AudioContext when it's not avb.
 var AudioContext = window.AudioContext || window.webkitAudioContext;
-var audioContext //new audio context to help us record
-
+var audioContext; //new audio context to help us record
 
 //add events to those 2 buttons
 
 function startRecording() {
-    console.log("recordButton clicked");
+  console.log("recordButton clicked");
 
-    // Disable the record button until we get a success or fail from getUserMedia()
+  // Disable the record button until we get a success or fail from getUserMedia()
 
-    navigator.mediaDevices.getUserMedia({audio: true, video: false}).then(function(stream) {
-        console.log("getUserMedia() success, stream created, initializing Recorder.js ...");
+  navigator.mediaDevices
+    .getUserMedia({ audio: true, video: false })
+    .then(function (stream) {
+      console.log(
+        "getUserMedia() success, stream created, initializing Recorder.js ..."
+      );
 
-        audioContext = new AudioContext({sampleRate: 16000});
+      audioContext = new AudioContext({ sampleRate: 16000 });
 
-        // assign to gumStream for later use
-        gumStream = stream;
+      // assign to gumStream for later use
+      gumStream = stream;
 
-        // use the stream
-        input = audioContext.createMediaStreamSource(stream);
+      // use the stream
+      input = audioContext.createMediaStreamSource(stream);
 
-        // Create the Recorder object and configure to record mono sound (1 channel) Recording 2 channels will double the file size
-        rec = new Recorder(input, {numChannels: 1})
+      // Create the Recorder object and configure to record mono sound (1 channel) Recording 2 channels will double the file size
+      rec = new Recorder(input, { numChannels: 1 });
 
-        //start the recording process
-        rec.record()
+      //start the recording process
+      rec.record();
 
-        console.log("Recording started");
-
-    }).catch(function(err) {
-        //enable the record button if getUserMedia() fails
-        recordButton.disabled = false;
-        stopButton.disabled = true;
+      console.log("Recording started");
+    })
+    .catch(function (err) {
+      //enable the record button if getUserMedia() fails
+      recordButton.disabled = false;
+      stopButton.disabled = true;
     });
 }
 function stopRecording() {
-    console.log("stopButton clicked");
+  console.log("stopButton clicked");
 
-    //disable the stop button, enable the record too allow for new recordings
- 
+  //disable the stop button, enable the record too allow for new recordings
 
-    //tell the recorder to stop the recording
-    rec.stop(); //stop microphone access
-    gumStream.getAudioTracks()[0].stop();
+  //tell the recorder to stop the recording
+  rec.stop(); //stop microphone access
+  gumStream.getAudioTracks()[0].stop();
 
-    //create the wav blob and pass it on to createDownloadLink
-    rec.exportWAV(createDownloadLink);
+  //create the wav blob and pass it on to createDownloadLink
+  rec.exportWAV(createDownloadLink);
 }
 
 function createDownloadLink(blob) {
-    var url = URL.createObjectURL(blob);
-    var au = document.createElement('audio');
-    var li = document.createElement('li');
-    var link = document.createElement('a');
+  var url = URL.createObjectURL(blob);
+  var au = document.createElement("audio");
+  var li = document.createElement("li");
+  var link = document.createElement("a");
 
-    console.log(blob);
+  console.log(blob);
 
-    console.log(url);
+  console.log(url);
 
-    //name of .wav file to use during upload and download (without extension)
-    var filename = new Date().toISOString();
+  //name of .wav file to use during upload and download (without extension)
+  var filename = new Date().toISOString();
 
-    //add controls to the <audio> element
-    au.controls = true;
-    au.src = url;
+  //add controls to the <audio> element
+  au.controls = true;
+  au.src = url;
 
-    //save to disk link
-    link.href = url;
-    link.download = filename+".wav"; //download forces the browser to download the file using the  filename
-    link.innerHTML = "Save to disk";
+  //save to disk link
+  link.href = url;
+  link.download = filename + ".wav"; //download forces the browser to download the file using the  filename
+  link.innerHTML = "Save to disk";
 
-    console.log(filename+".wav");
+  console.log(filename + ".wav");
 
+  var formdata = new FormData();
+  formdata.append("title", "1");
+  formdata.append("singer", "1");
+  formdata.append("track", blob, "a98796cc-5c17-4e14-99ad-ec953cb14633.wav");
 
-    var formdata = new FormData();
-formdata.append("title", "1");
-formdata.append("singer", "1");
-formdata.append("track", blob, "a98796cc-5c17-4e14-99ad-ec953cb14633.wav");
+  var requestOptions = {
+    method: "POST",
+    body: formdata,
+    redirect: "follow",
+  };
 
-var requestOptions = {
-  method: 'POST',
-  body: formdata,
-  redirect: 'follow'
-};
-
-fetch("http://localhost:5002/audio", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
-
- 
+  fetch("http://localhost:5002/audio", requestOptions)
+    .then((response) => response.text())
+    .then((result) => console.log(result))
+    .catch((error) => console.log("error", error));
 }
