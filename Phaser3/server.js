@@ -18,25 +18,6 @@ const gameServer = new colyseus.Server({
   server: server,
 });
 
-var check = 0;
-
-app.get("/apicheck", (req, res) => {
-  console.log("helloworld");
-  var check = 999;
-  console.log(check);
-});
-
-var roomname;
-
-app.post("/apicheck2", (req, res) => {
-  roomname = req.body;
-  res.send({
-    roomname,
-  });
-  console.log("apichcke2 is success! " + JSON.stringify(roomname));
-  console.log("apichcke2 is success! " + JSON.stringify(roomname.roomname));
-});
-
 /*
   gameServer
     .define(roomname.roomname, PokeWorld)
@@ -49,7 +30,7 @@ app.post("/apicheck2", (req, res) => {
 
 // register your room handlers
 gameServer
-  .define("custom", PokeWorld,{charname:""})
+  .define("custom", PokeWorld, { charname: "" })
   .on("create", (room) => console.log("room created:", room.roomId))
   .on("dispose", (room) => console.log("room disposed:", room.roomId))
   .on("join", (room, client) => console.log(client.id, "joined", room.roomId))

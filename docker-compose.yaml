@@ -10,7 +10,7 @@ services:
     expose:
       - "5002"
     environment:
-      NODE_ENV: production
+      NODE_ENV: dev
 
     links:
       - mongodb

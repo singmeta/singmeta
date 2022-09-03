@@ -7,8 +7,6 @@ var CurrentTime = require("../functions/function");
 
 const Colyseus = require("colyseus.js");
 
-var client = new Colyseus.Client("ws://localhost:3000");
-
 const mongoose = require("mongoose");
 mongoose
   .connect(config.mongoURI, {})
@@ -17,7 +15,6 @@ mongoose
 
 // 방 만들기
 router.get("/createRoom/:mapid/:charname/:nickname/:roomid", (req, res) => {
-
   res.render("main.pug");
 
   /*
@@ -77,19 +74,6 @@ router.get("/createRoom/:mapid/:charname/:nickname/:roomid", (req, res) => {
   */
 });
 
-// 모든 방 조회
-router.get("/getRooms", (req, res) => {
-
-
-  res.send("map2");
-
-  /*
-  Room.find({}, (error, list) => {
-    res.status(200).send({ rooms: list });
-  });
-  */
-});
-
 // 특정 방 조회
 router.get("/getRoom/:id", (req, res) => {
   Room.findOne({ id: req.params.id }, (err, room) => {
@@ -106,11 +90,6 @@ router.get("/getRoom/:id", (req, res) => {
 
 // 방 입장 -> 비밀번호 유무 상관없이 가능
 router.get("/enterRoom/:mapid/:charname/:id/:nickname/:roomid", (req, res) => {
-
-
-
-
-
   res.render("main.pug");
   // 방 찾기
   /*
